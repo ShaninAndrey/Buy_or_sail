@@ -1,0 +1,10 @@
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.add_advertisment.resources
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Form1.resources
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Properties.Resources.resources
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.csproj.GenerateResource.Cache
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\bin\Debug\Buy_Or_Sail.exe
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\bin\Debug\Buy_Or_Sail.pdb
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.exe
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.pdb
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.advertisment_viev.resources
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Add_success.resources
