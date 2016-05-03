@@ -35,6 +35,12 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Buy = new System.Windows.Forms.CheckBox();
             this.Sell = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Log_in = new System.Windows.Forms.Button();
+            this.Sign_in = new System.Windows.Forms.Button();
+            this.my_advertisment = new System.Windows.Forms.CheckBox();
+            this.delete_advertisment = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,16 +48,17 @@
             // 
             this.Advertisment_Add.Location = new System.Drawing.Point(12, 175);
             this.Advertisment_Add.Name = "Advertisment_Add";
-            this.Advertisment_Add.Size = new System.Drawing.Size(121, 65);
+            this.Advertisment_Add.Size = new System.Drawing.Size(121, 24);
             this.Advertisment_Add.TabIndex = 11;
             this.Advertisment_Add.Text = "Add Advertisment";
             this.Advertisment_Add.UseVisualStyleBackColor = true;
+            this.Advertisment_Add.Visible = false;
             this.Advertisment_Add.Click += new System.EventHandler(this.Advertisment_Add_Click);
             // 
             // Theme_string
             // 
             this.Theme_string.AutoSize = true;
-            this.Theme_string.Location = new System.Drawing.Point(12, 50);
+            this.Theme_string.Location = new System.Drawing.Point(12, 58);
             this.Theme_string.Name = "Theme_string";
             this.Theme_string.Size = new System.Drawing.Size(75, 13);
             this.Theme_string.TabIndex = 13;
@@ -60,7 +67,7 @@
             // Theme_check
             // 
             this.Theme_check.FormattingEnabled = true;
-            this.Theme_check.Location = new System.Drawing.Point(12, 77);
+            this.Theme_check.Location = new System.Drawing.Point(12, 74);
             this.Theme_check.Name = "Theme_check";
             this.Theme_check.Size = new System.Drawing.Size(121, 21);
             this.Theme_check.TabIndex = 12;
@@ -99,7 +106,7 @@
             // Sell
             // 
             this.Sell.AutoSize = true;
-            this.Sell.Location = new System.Drawing.Point(80, 12);
+            this.Sell.Location = new System.Drawing.Point(86, 12);
             this.Sell.Name = "Sell";
             this.Sell.Size = new System.Drawing.Size(43, 17);
             this.Sell.TabIndex = 21;
@@ -107,11 +114,79 @@
             this.Sell.UseVisualStyleBackColor = true;
             this.Sell.CheckedChanged += new System.EventHandler(this.Sell_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 65);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "If you want to add or delete\r\nyour advertisments, you\r\nhave to log in. If your\r\na" +
+    "ccount doesn\'t already\r\nexist, you must create it.";
+            // 
+            // Log_in
+            // 
+            this.Log_in.Location = new System.Drawing.Point(12, 175);
+            this.Log_in.Name = "Log_in";
+            this.Log_in.Size = new System.Drawing.Size(47, 65);
+            this.Log_in.TabIndex = 23;
+            this.Log_in.Text = "Log in";
+            this.Log_in.UseVisualStyleBackColor = true;
+            this.Log_in.Click += new System.EventHandler(this.Log_in_Click);
+            // 
+            // Sign_in
+            // 
+            this.Sign_in.Location = new System.Drawing.Point(86, 175);
+            this.Sign_in.Name = "Sign_in";
+            this.Sign_in.Size = new System.Drawing.Size(47, 65);
+            this.Sign_in.TabIndex = 24;
+            this.Sign_in.Text = "Sign in";
+            this.Sign_in.UseVisualStyleBackColor = true;
+            this.Sign_in.Click += new System.EventHandler(this.Sign_in_Click);
+            // 
+            // my_advertisment
+            // 
+            this.my_advertisment.AutoSize = true;
+            this.my_advertisment.Location = new System.Drawing.Point(15, 35);
+            this.my_advertisment.Name = "my_advertisment";
+            this.my_advertisment.Size = new System.Drawing.Size(131, 17);
+            this.my_advertisment.TabIndex = 25;
+            this.my_advertisment.Text = "Only my advertisments";
+            this.my_advertisment.UseVisualStyleBackColor = true;
+            this.my_advertisment.Visible = false;
+            this.my_advertisment.CheckedChanged += new System.EventHandler(this.my_advertisment_CheckedChanged);
+            // 
+            // delete_advertisment
+            // 
+            this.delete_advertisment.Location = new System.Drawing.Point(12, 216);
+            this.delete_advertisment.Name = "delete_advertisment";
+            this.delete_advertisment.Size = new System.Drawing.Size(121, 23);
+            this.delete_advertisment.TabIndex = 26;
+            this.delete_advertisment.Text = "Delete advertisment";
+            this.delete_advertisment.UseVisualStyleBackColor = true;
+            this.delete_advertisment.Visible = false;
+            this.delete_advertisment.Click += new System.EventHandler(this.delete_advertisment_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 262);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.delete_advertisment);
+            this.Controls.Add(this.my_advertisment);
+            this.Controls.Add(this.Sign_in);
+            this.Controls.Add(this.Log_in);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Sell);
             this.Controls.Add(this.Buy);
             this.Controls.Add(this.dataGridView1);
@@ -136,6 +211,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.CheckBox Buy;
         private System.Windows.Forms.CheckBox Sell;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Log_in;
+        private System.Windows.Forms.Button Sign_in;
+        private System.Windows.Forms.CheckBox my_advertisment;
+        private System.Windows.Forms.Button delete_advertisment;
+        private System.Windows.Forms.Label label2;
     }
 }
 

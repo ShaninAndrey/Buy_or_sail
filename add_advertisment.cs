@@ -29,7 +29,12 @@ namespace Buy_Or_Sail
 
         public void add()
         {
-
+            string str = Theme_check.Text, BOS = "";
+            if(Buy.Checked) BOS = "Buy"; else BOS = "Sell";
+            if(Theme_add_string.Text.Length > 0) str = Theme_add_string.Text;
+            first.DB.add_advertisment(new Advertisment(first.DB.Last_id, first.Nick, str, BOS, Content.Text, Text.Text, Tegs.Text));
+            first.update_table();
+            this.Close();
         }
 
         private void Content_Click(object sender, EventArgs e)
@@ -49,15 +54,15 @@ namespace Buy_Or_Sail
 
         private void Advertisment_Add_Click(object sender, EventArgs e)
         {
-            string str;
-            if (Theme_check.Text == "" && Theme_add_string.Text == "")
-                str = "Are you sure want to create\nnew advertisment without theme?";
+            if (Theme_check.Text.Length > 0 || Theme_add_string.Text.Length > 0)
+            {
+                Add_success form = new Add_success(this);
+                form.Show();
+            }
             else
-                if (Theme_add_string.Text != "") str = "Are you sure want to create\nnew advertisment about " + Theme_add_string.Text;
-                else
-                    str = "Are you sure want to create\nnew advertisment about " + Theme_check.Text;
-            Add_success form = new Add_success(this, str);
-            form.Show();
+            {
+                label2.Visible = true;
+            }
         }
     }
 }

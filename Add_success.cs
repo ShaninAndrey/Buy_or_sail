@@ -13,11 +13,10 @@ namespace Buy_Or_Sail
     {
         add_advertisment first;
 
-        public Add_success(add_advertisment First, string s)
+        public Add_success(add_advertisment First)
         {
             first = First;
             InitializeComponent();
-            label1.Text = s;
         }
 
         private void No_Click(object sender, EventArgs e)

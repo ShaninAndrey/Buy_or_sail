@@ -8,3 +8,6 @@ D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.exe
 D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.pdb
 D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.advertisment_viev.resources
 D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Add_success.resources
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Log_in_form.resources
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Sign_in_form.resources
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.csprojResolveAssemblyReference.cache

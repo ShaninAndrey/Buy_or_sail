@@ -40,6 +40,7 @@
             this.Telephone = new System.Windows.Forms.TextBox();
             this.edit_number = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Buy
@@ -151,11 +152,23 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Your theme";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 211);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 26);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Please, choose or write theme\r\nof you advetisment";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Visible = false;
+            // 
             // add_advertisment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 317);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.edit_number);
             this.Controls.Add(this.Telephone);
@@ -188,5 +201,6 @@
         private System.Windows.Forms.TextBox Telephone;
         private System.Windows.Forms.Label edit_number;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
