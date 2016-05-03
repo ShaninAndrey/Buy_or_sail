@@ -80,16 +80,19 @@
             this.tegs_box.Name = "tegs_box";
             this.tegs_box.Size = new System.Drawing.Size(534, 20);
             this.tegs_box.TabIndex = 14;
+            this.tegs_box.TextChanged += new System.EventHandler(this.tegs_box_TextChanged);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridView1.Location = new System.Drawing.Point(166, 50);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(534, 200);
             this.dataGridView1.TabIndex = 19;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing_1);
             // 
             // Buy
@@ -97,9 +100,9 @@
             this.Buy.AutoSize = true;
             this.Buy.Location = new System.Drawing.Point(15, 12);
             this.Buy.Name = "Buy";
-            this.Buy.Size = new System.Drawing.Size(44, 17);
+            this.Buy.Size = new System.Drawing.Size(43, 17);
             this.Buy.TabIndex = 20;
-            this.Buy.Text = "Buy";
+            this.Buy.Text = "Sell";
             this.Buy.UseVisualStyleBackColor = true;
             this.Buy.CheckedChanged += new System.EventHandler(this.Buy_CheckedChanged);
             // 
@@ -108,9 +111,9 @@
             this.Sell.AutoSize = true;
             this.Sell.Location = new System.Drawing.Point(86, 12);
             this.Sell.Name = "Sell";
-            this.Sell.Size = new System.Drawing.Size(43, 17);
+            this.Sell.Size = new System.Drawing.Size(44, 17);
             this.Sell.TabIndex = 21;
-            this.Sell.Text = "Sell";
+            this.Sell.Text = "Buy";
             this.Sell.UseVisualStyleBackColor = true;
             this.Sell.CheckedChanged += new System.EventHandler(this.Sell_CheckedChanged);
             // 
@@ -162,7 +165,7 @@
             this.delete_advertisment.Name = "delete_advertisment";
             this.delete_advertisment.Size = new System.Drawing.Size(121, 23);
             this.delete_advertisment.TabIndex = 26;
-            this.delete_advertisment.Text = "Delete advertisment";
+            this.delete_advertisment.Text = "Delete Advertisment";
             this.delete_advertisment.UseVisualStyleBackColor = true;
             this.delete_advertisment.Visible = false;
             this.delete_advertisment.Click += new System.EventHandler(this.delete_advertisment_Click);

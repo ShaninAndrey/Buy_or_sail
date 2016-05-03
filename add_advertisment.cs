@@ -54,15 +54,26 @@ namespace Buy_Or_Sail
 
         private void Advertisment_Add_Click(object sender, EventArgs e)
         {
-            if (Theme_check.Text.Length > 0 || Theme_add_string.Text.Length > 0)
+            if (!((Theme_check.Text.Length > 0 || Theme_add_string.Text.Length > 0)))
             {
-                Add_success form = new Add_success(this);
-                form.Show();
-            }
-            else
-            {
+                label2.Text = "Please, choose or write theme\nof you advetisment";
                 label2.Visible = true;
+                return;
             }
+            if (Content.Text.Length < 1 || Content.Text == "Content")
+            {
+                label2.Text = "Please, write content\nof your advertisment";
+                label2.Visible = true;
+                return;
+            }
+            if (Text.Text.Length < 1 || Text.Text == "Text")
+            {
+                label2.Text = "Please, write text\nof your advertisment";
+                label2.Visible = true;
+                return;
+            }
+            Add_success form = new Add_success(this);
+            form.Show();
         }
     }
 }

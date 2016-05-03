@@ -37,8 +37,6 @@
             this.Text = new System.Windows.Forms.TextBox();
             this.Tegs = new System.Windows.Forms.TextBox();
             this.Advertisment_Add = new System.Windows.Forms.Button();
-            this.Telephone = new System.Windows.Forms.TextBox();
-            this.edit_number = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -46,7 +44,7 @@
             // Buy
             // 
             this.Buy.AutoSize = true;
-            this.Buy.Location = new System.Drawing.Point(15, 12);
+            this.Buy.Location = new System.Drawing.Point(26, 12);
             this.Buy.Name = "Buy";
             this.Buy.Size = new System.Drawing.Size(43, 17);
             this.Buy.TabIndex = 0;
@@ -57,7 +55,7 @@
             // Sail
             // 
             this.Sail.AutoSize = true;
-            this.Sail.Location = new System.Drawing.Point(91, 13);
+            this.Sail.Location = new System.Drawing.Point(105, 13);
             this.Sail.Name = "Sail";
             this.Sail.Size = new System.Drawing.Size(42, 17);
             this.Sail.TabIndex = 1;
@@ -68,7 +66,7 @@
             // Theme_check
             // 
             this.Theme_check.FormattingEnabled = true;
-            this.Theme_check.Location = new System.Drawing.Point(12, 57);
+            this.Theme_check.Location = new System.Drawing.Point(26, 63);
             this.Theme_check.Name = "Theme_check";
             this.Theme_check.Size = new System.Drawing.Size(121, 21);
             this.Theme_check.TabIndex = 3;
@@ -76,7 +74,7 @@
             // Theme_string
             // 
             this.Theme_string.AutoSize = true;
-            this.Theme_string.Location = new System.Drawing.Point(12, 38);
+            this.Theme_string.Location = new System.Drawing.Point(23, 41);
             this.Theme_string.Name = "Theme_string";
             this.Theme_string.Size = new System.Drawing.Size(73, 13);
             this.Theme_string.TabIndex = 4;
@@ -84,7 +82,7 @@
             // 
             // Theme_add_string
             // 
-            this.Theme_add_string.Location = new System.Drawing.Point(12, 115);
+            this.Theme_add_string.Location = new System.Drawing.Point(26, 115);
             this.Theme_add_string.Name = "Theme_add_string";
             this.Theme_add_string.Size = new System.Drawing.Size(121, 20);
             this.Theme_add_string.TabIndex = 5;
@@ -119,7 +117,7 @@
             // 
             // Advertisment_Add
             // 
-            this.Advertisment_Add.Location = new System.Drawing.Point(12, 240);
+            this.Advertisment_Add.Location = new System.Drawing.Point(26, 240);
             this.Advertisment_Add.Name = "Advertisment_Add";
             this.Advertisment_Add.Size = new System.Drawing.Size(121, 65);
             this.Advertisment_Add.TabIndex = 10;
@@ -127,26 +125,10 @@
             this.Advertisment_Add.UseVisualStyleBackColor = true;
             this.Advertisment_Add.Click += new System.EventHandler(this.Advertisment_Add_Click);
             // 
-            // Telephone
-            // 
-            this.Telephone.Location = new System.Drawing.Point(12, 175);
-            this.Telephone.Name = "Telephone";
-            this.Telephone.Size = new System.Drawing.Size(121, 20);
-            this.Telephone.TabIndex = 11;
-            // 
-            // edit_number
-            // 
-            this.edit_number.AutoSize = true;
-            this.edit_number.Location = new System.Drawing.Point(12, 159);
-            this.edit_number.Name = "edit_number";
-            this.edit_number.Size = new System.Drawing.Size(113, 13);
-            this.edit_number.TabIndex = 12;
-            this.edit_number.Text = "Edit telephone number";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 99);
+            this.label1.Location = new System.Drawing.Point(23, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 13;
@@ -155,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 211);
+            this.label2.Location = new System.Drawing.Point(9, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 26);
             this.label2.TabIndex = 14;
@@ -170,8 +152,6 @@
             this.ClientSize = new System.Drawing.Size(574, 317);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.edit_number);
-            this.Controls.Add(this.Telephone);
             this.Controls.Add(this.Advertisment_Add);
             this.Controls.Add(this.Tegs);
             this.Controls.Add(this.Text);
@@ -198,8 +178,6 @@
         private System.Windows.Forms.TextBox Text;
         private System.Windows.Forms.TextBox Tegs;
         private System.Windows.Forms.Button Advertisment_Add;
-        private System.Windows.Forms.TextBox Telephone;
-        private System.Windows.Forms.Label edit_number;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }

@@ -34,7 +34,7 @@ namespace Buy_Or_Sail
             dataGridView1.Columns[1].Visible = false;
             dataGridView1.Columns[2].Width = dataGridView1.Width / 5;
             dataGridView1.Columns[3].Width = dataGridView1.Width / 6;
-            dataGridView1.Columns[4].Width = dataGridView1.Width - dataGridView1.Columns[2].Width - 3 - dataGridView1.Columns[3].Width;
+            dataGridView1.Columns[4].Width = dataGridView1.Width - dataGridView1.Columns[2].Width - 2 - dataGridView1.Columns[3].Width - dataGridView1.RowHeadersWidth;
             Theme_check.Items.Add("All Themes");
             for (int i = 0; i < keys.Count; i++)
             {
@@ -68,35 +68,80 @@ namespace Buy_Or_Sail
         {
             DB.add_user(user);
         }
+        public void add_theme(string theme)
+        {
+            Theme_check.Items.Add(theme);
+        }
         public void update_table()
         {
             dataGridView1.Rows.Clear();
-            if (Theme_check.Text != "All Themes" && Theme_check.Text.Length > 0)
+            if (tegs_box.Text.Length < 1)
             {
-                for (int i = 0; i < db.Keys_id[Theme_check.Text].Count; i++)
-                    if (Buy.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Buy" ||
-                       Sell.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Sell" ||
-                        !Sell.Checked && !Buy.Checked)
-                    {
-                        if (my_advertisment.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].User_name == nick || !(my_advertisment.Checked))
+                if (Theme_check.Text != "All Themes" && Theme_check.Text.Length > 0)
+                {
+                    for (int i = 0; i < db.Keys_id[Theme_check.Text].Count; i++)
+                        if (Buy.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Buy" ||
+                           Sell.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Sell" ||
+                            !Sell.Checked && !Buy.Checked)
                         {
-                            Advertisment a = db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]];
-                            dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                            if (my_advertisment.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].User_name == nick || !(my_advertisment.Checked))
+                            {
+                                Advertisment a = db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]];
+                                dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                            }
                         }
-                    }
-                return;
+                    return;
+                }
+                for (int q = 0; q < db.Keys.Count; q++) for (int i = 0; i < db.Keys_id[db.Keys[q]].Count; i++)
+                        if (Buy.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].BuyOrSail == "Buy" ||
+                           Sell.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].BuyOrSail == "Sell" ||
+                            !Sell.Checked && !Buy.Checked)
+                        {
+                            if (my_advertisment.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].User_name == nick || !(my_advertisment.Checked))
+                            {
+                                Advertisment a = db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]];
+                                dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                            }
+                        }
             }
-            for (int q = 0; q < db.Keys.Count; q++) for (int i = 0; i < db.Keys_id[db.Keys[q]].Count; i++)
-                    if (Buy.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].BuyOrSail == "Buy" ||
-                       Sell.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].BuyOrSail == "Sell" ||
-                        !Sell.Checked && !Buy.Checked)
-                    {
-                        if (my_advertisment.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].User_name == nick || !(my_advertisment.Checked))
+            else
+            {
+                List<string> tegs = get_tegs();
+                if (Theme_check.Text != "All Themes" && Theme_check.Text.Length > 0)
+                {
+                    for (int i = 0; i < db.Keys_id[Theme_check.Text].Count; i++)
+                        if (Buy.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Buy" ||
+                           Sell.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Sell" ||
+                            !Sell.Checked && !Buy.Checked)
                         {
-                            Advertisment a = db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]];
-                            dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                            if (my_advertisment.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].User_name == nick || !(my_advertisment.Checked))
+                            {
+                                Advertisment a = db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]];
+                                for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
+                                    {
+                                        dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                                        break;
+                                    }
+                            }
                         }
-                    }
+                    return;
+                }
+                for (int q = 0; q < db.Keys.Count; q++) for (int i = 0; i < db.Keys_id[db.Keys[q]].Count; i++)
+                        if (Buy.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].BuyOrSail == "Buy" ||
+                           Sell.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].BuyOrSail == "Sell" ||
+                            !Sell.Checked && !Buy.Checked)
+                        {
+                            if (my_advertisment.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].User_name == nick || !(my_advertisment.Checked))
+                            {
+                                Advertisment a = db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]];
+                                for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
+                                    {
+                                        dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                                        break;
+                                    }
+                            }
+                        }
+            }
         }
 
         private void Advertisment_Add_Click(object sender, EventArgs e)
@@ -135,7 +180,6 @@ namespace Buy_Or_Sail
         {
             update_table();
         }
-
         private void delete_advertisment_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
@@ -143,6 +187,44 @@ namespace Buy_Or_Sail
                     DB.delete_advertisment(new Advertisment(Convert.ToInt32(dataGridView1.SelectedRows[i].Cells[0].Value.ToString()),
                                                             dataGridView1.SelectedRows[i].Cells[1].Value.ToString(),
                                                             dataGridView1.SelectedRows[i].Cells[2].Value.ToString()));
+            update_table();
+        }
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.SelectedCells[0].Value.ToString().Length > 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex];
+                advertisment_viev form = new advertisment_viev(DB.DB[row.Cells[2].Value.ToString()][Convert.ToInt32(row.Cells[0].Value.ToString())], this);
+                form.Show();
+            }
+        }
+        private List<string> get_tegs()
+        {
+            Sign_in.Text = "asdf";
+            List<string> teg = new List<string>();
+            int l = 0;
+            for (int i = 1; i < tegs_box.Text.Length; i++) if (tegs_box.Text[i] == ' ' && tegs_box.Text[i - 1] != ' ')
+                {
+                    teg.Add(tegs_box.Text.Substring(l, i - l));
+                    l = i + 1;
+                }
+                else if (tegs_box.Text[i] == ' ') l = i + 1;
+            if(l!=tegs_box.Text.Length) teg.Add(tegs_box.Text.Substring(l));
+            return teg;
+        }
+        private bool align_tegs(string teg, Advertisment adv)
+        {
+            if (adv.Tegs.Count == 0) return true;
+            for (int i = 0; i < adv.Tegs.Count; i++)
+            {
+                for (int q = 0; q < Math.Min(teg.Length, adv.Tegs[i].Length); q++)
+                    if (Program.big_small(teg[q]) != Program.big_small(adv.Tegs[i][q])) return false;
+                return true;
+            }
+            return false;
+        }
+        private void tegs_box_TextChanged(object sender, EventArgs e)
+        {
             update_table();
         }
     }

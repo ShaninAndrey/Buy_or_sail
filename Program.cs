@@ -218,7 +218,8 @@ namespace Buy_Or_Sail
             sw.WriteLine(a.Content);
             sw.WriteLine(a.Text);
             string tegs = "";
-            for (int i = 0; i < a.Tegs.Count; i++) tegs = tegs + " " + Convert.ToString(a.Tegs[i]);
+            if (a.Tegs.Count != 0) tegs = a.Tegs[0];
+            for (int i = 1; i < a.Tegs.Count; i++) tegs = tegs + " " + a.Tegs[i];
             sw.WriteLine(tegs);
         }
         public void write_user(Users user)
@@ -245,13 +246,19 @@ namespace Buy_Or_Sail
         /// </summary>
         [STAThread]
         static void Main()
-       {
+        {
             Table db = new Table();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1(db));
             db.write();
+        }
+
+        public static char big_small(char a)
+        {
+            if (a >= 'A' && a <= 'Z') return (char)(a - 'A' + 'a');
+            return a;
         }
     }
 }

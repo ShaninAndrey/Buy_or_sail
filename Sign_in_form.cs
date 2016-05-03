@@ -31,9 +31,18 @@ namespace Buy_Or_Sail
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string nick = "";
+            for (int i = 0; i < textBox1.Text.Length; i++) nick = nick + Program.big_small(textBox1.Text[i]);
+
             if (textBox1.Text.Length < 1)
             {
                 label4.Text = "Write your login please";
+                label4.Visible = true;
+                return;
+            }
+            if (textBox1.Text[0] >= '0' && textBox1.Text[0] <= '9')
+            {
+                label4.Text = "Use only a-z characters in your nick";
                 label4.Visible = true;
                 return;
             }
@@ -49,8 +58,14 @@ namespace Buy_Or_Sail
                 label4.Visible = true;
                 return;
             }
-            if (textBox2.Text != textBox3.Text) { label4.Visible = true; return; }
-            first.register_user(new Users(first.DB.Last_id, textBox1.Text, textBox2.Text, maskedTextBox1.Text));
+            if (textBox2.Text != textBox3.Text) { label4.Text = "Password aren't equale"; label4.Visible = true; return; }
+            if (first.DB.Users.ContainsKey(nick))
+            {
+                label4.Text = "this nickname used";
+                label4.Visible = true;
+                return;
+            }
+            first.register_user(new Users(first.DB.Last_id, nick, textBox2.Text, maskedTextBox1.Text));
             this.Close();
         }
     }
