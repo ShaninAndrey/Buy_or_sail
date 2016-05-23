@@ -21,17 +21,16 @@ namespace Buy_Or_Sail
         public Form1(Table DB)
         {
             InitializeComponent();
+            nick = "";
             db = DB;
             List<string> keys = DB.Keys;
             dataGridView1.Columns.Add("Id", "Id");
-            dataGridView1.Columns.Add("User", "User");
+            dataGridView1.Columns.Add("Rating", "Rating");
             dataGridView1.Columns.Add("Theme", "Theme");
             dataGridView1.Columns.Add("BOS", "Buy or sell");
             dataGridView1.Columns.Add("Content", "Content");
-            dataGridView1.Columns.Add("Text", "Text");
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[1].Width = dataGridView1.Width / 10;
             dataGridView1.Columns[2].Width = dataGridView1.Width / 5;
             dataGridView1.Columns[3].Width = dataGridView1.Width / 6;
             dataGridView1.Columns[4].Width = dataGridView1.Width - dataGridView1.Columns[2].Width - 2 - dataGridView1.Columns[3].Width - dataGridView1.RowHeadersWidth;
@@ -42,7 +41,7 @@ namespace Buy_Or_Sail
                 for (int q = 0; q < DB.Keys_id[keys[i]].Count; q++)
                 {
                     Advertisment a = DB.DB[keys[i]][DB.Keys_id[DB.Keys[i]][q]];
-                    dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                    dataGridView1.Rows.Add(a.Id,DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content);
                 }
             }
         }
@@ -55,6 +54,7 @@ namespace Buy_Or_Sail
             Sell.Location = new Point(Sell.Location.X, Sell.Location.Y + 64);
             Theme_check.Location = new Point(Theme_check.Location.X, Theme_check.Location.Y + 64);
             Theme_string.Location = new Point(Theme_string.Location.X, Theme_string.Location.Y + 64);
+            for (int i = 0; i < db.Users[Nick].Id_adv.Count; i++) db.Advertisment[db.Users[Nick].Id_adv[i]].Rating = true;
             label2.Text = "Hello, " + Nick;
             label2.Visible = true;
             my_advertisment.Visible = true;
@@ -68,9 +68,14 @@ namespace Buy_Or_Sail
         {
             DB.add_user(user);
         }
-        public void add_theme(string theme)
+        public void delete_adv()
         {
-            Theme_check.Items.Add(theme);
+            for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                if (db.Advertisment[Convert.ToInt32(dataGridView1.SelectedRows[i].Cells[0].Value)].User_name == nick)
+                    DB.delete_advertisment(new Advertisment(Convert.ToInt32(dataGridView1.SelectedRows[i].Cells[0].Value.ToString()),
+                                                            nick,
+                                                            dataGridView1.SelectedRows[i].Cells[2].Value.ToString()));
+            update_table();
         }
         public void update_table()
         {
@@ -182,12 +187,8 @@ namespace Buy_Or_Sail
         }
         private void delete_advertisment_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
-                if (dataGridView1.SelectedRows[i].Cells[1].Value.ToString() == nick)
-                    DB.delete_advertisment(new Advertisment(Convert.ToInt32(dataGridView1.SelectedRows[i].Cells[0].Value.ToString()),
-                                                            dataGridView1.SelectedRows[i].Cells[1].Value.ToString(),
-                                                            dataGridView1.SelectedRows[i].Cells[2].Value.ToString()));
-            update_table();
+            Add_success a = new Add_success(this);
+            a.Show();
         }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -226,6 +227,16 @@ namespace Buy_Or_Sail
         private void tegs_box_TextChanged(object sender, EventArgs e)
         {
             update_table();
+        }
+        private void Theme_check_TextChanged(object sender, EventArgs e)
+        {           
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+        private void Form1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

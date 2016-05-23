@@ -65,7 +65,7 @@ namespace Buy_Or_Sail
                 label4.Visible = true;
                 return;
             }
-            first.register_user(new Users(first.DB.Last_id, nick, textBox2.Text, maskedTextBox1.Text));
+            first.register_user(new Users(first.DB.Last_id, 0, nick, textBox2.Text, maskedTextBox1.Text, new List<int>()));
             this.Close();
         }
     }

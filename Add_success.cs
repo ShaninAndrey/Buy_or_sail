@@ -12,10 +12,19 @@ namespace Buy_Or_Sail
     public partial class Add_success : Form
     {
         add_advertisment first;
+        Form1 second;
+        int k;
 
         public Add_success(add_advertisment First)
         {
             first = First;
+            k = 1;
+            InitializeComponent();
+        }
+        public Add_success(Form1 First)
+        {
+            second = First;
+            k = 2;
             InitializeComponent();
         }
 
@@ -26,7 +35,7 @@ namespace Buy_Or_Sail
 
         private void Yes_Click(object sender, EventArgs e)
         {
-            first.add();
+            if (k == 1) first.add(); else second.delete_adv();
             this.Close();
         }
     }

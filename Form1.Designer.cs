@@ -46,7 +46,7 @@
             // 
             // Advertisment_Add
             // 
-            this.Advertisment_Add.Location = new System.Drawing.Point(12, 175);
+            this.Advertisment_Add.Location = new System.Drawing.Point(12, 185);
             this.Advertisment_Add.Name = "Advertisment_Add";
             this.Advertisment_Add.Size = new System.Drawing.Size(121, 24);
             this.Advertisment_Add.TabIndex = 11;
@@ -58,7 +58,7 @@
             // Theme_string
             // 
             this.Theme_string.AutoSize = true;
-            this.Theme_string.Location = new System.Drawing.Point(12, 58);
+            this.Theme_string.Location = new System.Drawing.Point(12, 61);
             this.Theme_string.Name = "Theme_string";
             this.Theme_string.Size = new System.Drawing.Size(75, 13);
             this.Theme_string.TabIndex = 13;
@@ -67,11 +67,12 @@
             // Theme_check
             // 
             this.Theme_check.FormattingEnabled = true;
-            this.Theme_check.Location = new System.Drawing.Point(12, 74);
+            this.Theme_check.Location = new System.Drawing.Point(12, 77);
             this.Theme_check.Name = "Theme_check";
             this.Theme_check.Size = new System.Drawing.Size(121, 21);
             this.Theme_check.TabIndex = 12;
             this.Theme_check.SelectedIndexChanged += new System.EventHandler(this.Theme_check_SelectedIndexChanged);
+            this.Theme_check.TextChanged += new System.EventHandler(this.Theme_check_TextChanged);
             // 
             // tegs_box
             // 
@@ -120,7 +121,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 98);
+            this.label1.Location = new System.Drawing.Point(12, 107);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 65);
             this.label1.TabIndex = 22;
@@ -129,7 +130,7 @@
             // 
             // Log_in
             // 
-            this.Log_in.Location = new System.Drawing.Point(12, 175);
+            this.Log_in.Location = new System.Drawing.Point(12, 185);
             this.Log_in.Name = "Log_in";
             this.Log_in.Size = new System.Drawing.Size(47, 65);
             this.Log_in.TabIndex = 23;
@@ -139,7 +140,7 @@
             // 
             // Sign_in
             // 
-            this.Sign_in.Location = new System.Drawing.Point(86, 175);
+            this.Sign_in.Location = new System.Drawing.Point(86, 185);
             this.Sign_in.Name = "Sign_in";
             this.Sign_in.Size = new System.Drawing.Size(47, 65);
             this.Sign_in.TabIndex = 24;
@@ -161,7 +162,7 @@
             // 
             // delete_advertisment
             // 
-            this.delete_advertisment.Location = new System.Drawing.Point(12, 216);
+            this.delete_advertisment.Location = new System.Drawing.Point(12, 226);
             this.delete_advertisment.Name = "delete_advertisment";
             this.delete_advertisment.Size = new System.Drawing.Size(121, 23);
             this.delete_advertisment.TabIndex = 26;
@@ -199,6 +200,8 @@
             this.Controls.Add(this.Advertisment_Add);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Click += new System.EventHandler(this.Form1_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

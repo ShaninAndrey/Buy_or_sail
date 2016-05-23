@@ -32,13 +32,12 @@
             this.Sail = new System.Windows.Forms.RadioButton();
             this.Theme_check = new System.Windows.Forms.ComboBox();
             this.Theme_string = new System.Windows.Forms.Label();
-            this.Theme_add_string = new System.Windows.Forms.TextBox();
             this.Content = new System.Windows.Forms.TextBox();
             this.Text = new System.Windows.Forms.TextBox();
             this.Tegs = new System.Windows.Forms.TextBox();
             this.Advertisment_Add = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // Buy
@@ -51,6 +50,7 @@
             this.Buy.TabStop = true;
             this.Buy.Text = "Buy";
             this.Buy.UseVisualStyleBackColor = true;
+            this.Buy.CheckedChanged += new System.EventHandler(this.Buy_CheckedChanged);
             // 
             // Sail
             // 
@@ -62,30 +62,27 @@
             this.Sail.TabStop = true;
             this.Sail.Text = "Sail";
             this.Sail.UseVisualStyleBackColor = true;
+            this.Sail.CheckedChanged += new System.EventHandler(this.Sail_CheckedChanged);
             // 
             // Theme_check
             // 
             this.Theme_check.FormattingEnabled = true;
-            this.Theme_check.Location = new System.Drawing.Point(26, 63);
+            this.Theme_check.Location = new System.Drawing.Point(26, 72);
             this.Theme_check.Name = "Theme_check";
             this.Theme_check.Size = new System.Drawing.Size(121, 21);
             this.Theme_check.TabIndex = 3;
+            this.Theme_check.SelectionChangeCommitted += new System.EventHandler(this.Theme_check_SelectionChangeCommitted);
+            this.Theme_check.TextChanged += new System.EventHandler(this.Theme_check_TextChanged);
             // 
             // Theme_string
             // 
             this.Theme_string.AutoSize = true;
-            this.Theme_string.Location = new System.Drawing.Point(23, 41);
+            this.Theme_string.Location = new System.Drawing.Point(23, 50);
             this.Theme_string.Name = "Theme_string";
             this.Theme_string.Size = new System.Drawing.Size(73, 13);
             this.Theme_string.TabIndex = 4;
             this.Theme_string.Text = "Check_theme";
-            // 
-            // Theme_add_string
-            // 
-            this.Theme_add_string.Location = new System.Drawing.Point(26, 115);
-            this.Theme_add_string.Name = "Theme_add_string";
-            this.Theme_add_string.Size = new System.Drawing.Size(121, 20);
-            this.Theme_add_string.TabIndex = 5;
+            this.Theme_string.Click += new System.EventHandler(this.Theme_string_Click);
             // 
             // Content
             // 
@@ -105,6 +102,7 @@
             this.Text.TabIndex = 8;
             this.Text.Text = "Text";
             this.Text.Click += new System.EventHandler(this.Text_Click);
+            this.Text.TextChanged += new System.EventHandler(this.Text_TextChanged);
             // 
             // Tegs
             // 
@@ -125,43 +123,46 @@
             this.Advertisment_Add.UseVisualStyleBackColor = true;
             this.Advertisment_Add.Click += new System.EventHandler(this.Advertisment_Add_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 99);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Your theme";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 182);
+            this.label2.Location = new System.Drawing.Point(12, 161);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 26);
             this.label2.TabIndex = 14;
             this.label2.Text = "Please, choose or write theme\r\nof you advetisment";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Visible = false;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(26, 90);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(121, 17);
+            this.listBox1.TabIndex = 15;
+            this.listBox1.Visible = false;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // add_advertisment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 317);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.Advertisment_Add);
             this.Controls.Add(this.Tegs);
             this.Controls.Add(this.Text);
             this.Controls.Add(this.Content);
-            this.Controls.Add(this.Theme_add_string);
             this.Controls.Add(this.Theme_string);
             this.Controls.Add(this.Theme_check);
             this.Controls.Add(this.Sail);
             this.Controls.Add(this.Buy);
             this.Name = "add_advertisment";
+            this.Load += new System.EventHandler(this.add_advertisment_Load);
+            this.Click += new System.EventHandler(this.add_advertisment_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,12 +174,11 @@
         private System.Windows.Forms.RadioButton Sail;
         private System.Windows.Forms.ComboBox Theme_check;
         private System.Windows.Forms.Label Theme_string;
-        private System.Windows.Forms.TextBox Theme_add_string;
         private System.Windows.Forms.TextBox Content;
         private System.Windows.Forms.TextBox Text;
         private System.Windows.Forms.TextBox Tegs;
         private System.Windows.Forms.Button Advertisment_Add;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
