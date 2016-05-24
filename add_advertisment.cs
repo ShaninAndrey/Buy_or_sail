@@ -18,6 +18,7 @@ namespace Buy_Or_Sail
             first = First;
             InitializeComponent();
             foreach (string key in first.DB.DB.Keys) Theme_check.Items.Add(key);
+            Theme_check.LostFocus += new System.EventHandler(Theme_check_ChangeFocused);
         }
 
         private void click_text(TextBox a)
@@ -30,29 +31,27 @@ namespace Buy_Or_Sail
         {
             string str = Theme_check.Text, BOS = "";
             if(Buy.Checked) BOS = "Buy"; else BOS = "Sell";
-            first.DB.add_advertisment(new Advertisment(first.DB.Last_id, first.Nick, str, BOS, Content.Text, Text.Lines, Tegs.Text));
+            List<DateTime> date = new List<DateTime>();
+            date.Add(DateTime.Now);
+            first.DB.add_advertisment(new Advertisment(first.DB.Last_id, first.Nick, str, BOS, Content.Text, Text.Lines, Tegs.Text, date));
             first.update_table();
             this.Close();
         }
 
         private void Content_Click(object sender, EventArgs e)
         {
-            listBox1.Visible = false;
             click_text(Content);
         }
         private void Text_Click(object sender, EventArgs e)
         {
-            listBox1.Visible = false;
             click_text(Text);
         }
         private void Tegs_Click(object sender, EventArgs e)
         {
-            listBox1.Visible = false;
             click_text(Tegs);
         }
         private void Advertisment_Add_Click(object sender, EventArgs e)
         {
-            listBox1.Visible = false;
             if (!((Theme_check.Text.Length > 0)))
             {
                 label2.Text = "Please, choose or write theme\nof you advetisment";
@@ -102,19 +101,15 @@ namespace Buy_Or_Sail
         }
         private void Sail_CheckedChanged(object sender, EventArgs e)
         {
-            listBox1.Visible = false;
         }
         private void Buy_CheckedChanged(object sender, EventArgs e)
         {
-            listBox1.Visible = false;
         }
         private void Theme_string_Click(object sender, EventArgs e)
         {
-            listBox1.Visible = false;
         }
         private void label2_Click(object sender, EventArgs e)
         {
-            listBox1.Visible = false;
         }
         private void add_advertisment_Click(object sender, EventArgs e)
         {
@@ -124,11 +119,28 @@ namespace Buy_Or_Sail
         {
 
         }
-
+        private void Theme_check_ChangeFocused(object sender, EventArgs e)
+        {
+            if(!listBox1.Focused) listBox1.Visible = false;
+        }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+        private void listBox1_MouseHover(object sender, EventArgs e)
+        {
+            
+        }
+        private void listBox1_Click(object sender, EventArgs e)
         {
             Theme_check.Text = listBox1.Items[listBox1.SelectedIndex].ToString();
             listBox1.Visible = false;
+        }
+        private void listBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = listBox1.Location.Y, y = this.Location.Y, z = MousePosition.Y;
+            int a = z - y - x - 32;
+            listBox1.SelectedIndex = a / 13;
         }
     }
 }

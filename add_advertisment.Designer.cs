@@ -138,12 +138,15 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(26, 90);
+            this.listBox1.Location = new System.Drawing.Point(26, 91);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(121, 17);
+            this.listBox1.Size = new System.Drawing.Size(120, 17);
             this.listBox1.TabIndex = 15;
             this.listBox1.Visible = false;
+            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.MouseHover += new System.EventHandler(this.listBox1_MouseHover);
+            this.listBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseMove);
             // 
             // add_advertisment
             // 

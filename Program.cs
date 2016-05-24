@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using System.IO;
 
 namespace Buy_Or_Sail
-{
+{    
     public class Table
     {
         int last_id;
@@ -53,6 +53,7 @@ namespace Buy_Or_Sail
                 keys_id[adv.Theme].Add(adv.Id);
                 db[adv.Theme].Add(adv.Id, adv);
                 advertisment.Add(adv.Id, adv);
+                users[adv.User_name].Advertisment.Add(adv.Id, adv);
             }
             file.sr_close();
         }
@@ -73,12 +74,14 @@ namespace Buy_Or_Sail
             keys_id[theme].Add(a.Id);
             db[theme].Add(a.Id, a);
             advertisment.Add(a.Id, a);
+            users[a.User_name].add_advertisment(a);
         }
         public void delete_advertisment(Advertisment a)
         {
             keys_id[a.Theme].Remove(a.Id);
             advertisment.Remove(a.Id);
             db[a.Theme].Remove(a.Id);
+            users[a.User_name].delete_advertisment(a);
         }
         public void write()
         {
@@ -102,7 +105,11 @@ namespace Buy_Or_Sail
         int id, rating;
         string user_name, password, telephone;
         List<int> id_adv;
+        Dictionary<int, Advertisment> advertisment;
+        List<KeyValuePair<bool, DateTime>> history;
 
+        public List<KeyValuePair<bool, DateTime>> History { get { return history; } }
+        public Dictionary<int, Advertisment> Advertisment { get { return advertisment; } }
         public List<int> Id_adv { get { return id_adv; } }
         public int Rating { get { return rating; } }
         public string Telephone { get { return telephone; } }
@@ -110,8 +117,11 @@ namespace Buy_Or_Sail
         public string User_name { get { return user_name; } }
         public string Password { get { return password; } }
 
-        public Users(int Id, int Rating, string User_name, string Password, string Telephone, List<int> Id_adv)
+        public Users(int Id, int Rating, string User_name, string Password, 
+                    string Telephone, List<int> Id_adv, List<KeyValuePair<bool, DateTime>> History)
         {
+            advertisment = new Dictionary<int, Advertisment>();
+            history = History;
             rating = Rating;
             id = Id;
             user_name = User_name;
@@ -122,18 +132,28 @@ namespace Buy_Or_Sail
 
         public void rating_inc() { rating++; }
         public void rating_dec() { rating--; }
+        public void add_advertisment(Advertisment a)
+        {
+            advertisment.Add(a.Id, a);
+            history.Add(new KeyValuePair<bool, DateTime>(true, a.History.Last()));
+        }
+        public void delete_advertisment(Advertisment a)
+        {
+            advertisment.Remove(a.Id);
+            history.Add(new KeyValuePair<bool, DateTime>(false, DateTime.Now));
+        }
     }
 
-    public class Advertisment
+    public class Advertisment : IComparable<Advertisment>
     {
         string user_name, buyOrSail, content, theme;
         string[] text;
         private int id;
         private List<string> tegs;
         bool rating;
-        DateTime date;
+        List<DateTime> history;
 
-        public DateTime Date { get { return date; } }
+        public List<DateTime> History { get { return history; } }
         public bool Rating { get { return rating; } set { rating = value; } }
         public string User_name { get { return user_name; } }
         public string BuyOrSail { get { return buyOrSail; } }
@@ -142,18 +162,21 @@ namespace Buy_Or_Sail
         public string Content
         {
             get { return content; }
+            set { content = value; }
         }
         public string[] Text
         {
             get { return text; }
+            set { text = value; }
         }
         public List<string> Tegs
         {
             get { return tegs; }
         }
 
-        public Advertisment(int Id, string User_name, string Theme, string BuyOrSail, string Content, string[] Text, string Tegs)
+        public Advertisment(int Id, string User_name, string Theme, string BuyOrSail, string Content, string[] Text, string Tegs, List<DateTime> Date)
         {
+            history = Date;
             rating = false;
             user_name = User_name;
             id = Id;
@@ -176,6 +199,10 @@ namespace Buy_Or_Sail
             theme = Theme;
         }
 
+        public int CompareTo(Advertisment other)
+        {
+            return History.Last().CompareTo(other.History.Last());
+        }
     }
 
     class File_work
@@ -201,31 +228,44 @@ namespace Buy_Or_Sail
         public Advertisment read_advertisment()
         {
             string user, theme, content, tegs, BOS;
+            List<DateTime> date = new List<DateTime>();
             List<string> text = new List<string>();
             user = sr.ReadLine();
             BOS = sr.ReadLine();
             theme = sr.ReadLine();
             content = sr.ReadLine();
             tegs = sr.ReadLine();
+            int m = read_int();
+            for (int i = 0; i < m; i++) date.Add(Program.get_date(sr.ReadLine()));
             int n = read_int();
             for (int i = 0; i < n; i++) text.Add(sr.ReadLine());
+            
             id++;
-            return new Advertisment(id, user, theme, BOS, content, text.ToArray(), tegs);
+            return new Advertisment(id, user, theme, BOS, content, text.ToArray(), tegs, date);
         }
         public Users read_user()
         {
             string user_name, password, tel, adv;
-            int rating;
+            int rating, n;
+            List<KeyValuePair<bool, DateTime>> time = new List<KeyValuePair<bool, DateTime>>();
             user_name = sr.ReadLine();
             password = sr.ReadLine();
             rating = read_int();
             tel = sr.ReadLine();
             adv = sr.ReadLine();
+            n = read_int();
+            for (int i = 0; i < n; i++)
+            {
+                string s = sr.ReadLine();
+                DateTime date = Program.get_date(s.Substring(1));
+                if (s[0] == '0') time.Add(new KeyValuePair<bool, DateTime>(false, date)); else
+                    time.Add(new KeyValuePair<bool, DateTime>(true, date));
+            }
             string[] ids = adv.Split(' ');
             List<int> a = new List<int>();
             for (int i = 0; i < ids.Length-1; i++) a.Add(Convert.ToInt32(ids[i]));
             id++;
-            return new Users(id, rating, user_name, password, tel, a);
+            return new Users(id, rating, user_name, password, tel, a, time);
         }
 
         public void write_int(int a) { sw.WriteLine(a); }
@@ -239,6 +279,8 @@ namespace Buy_Or_Sail
             if (a.Tegs.Count != 0) tegs = a.Tegs[0];
             for (int i = 1; i < a.Tegs.Count; i++) tegs = tegs + " " + a.Tegs[i];
             sw.WriteLine(tegs);
+            write_int(a.History.Count);
+            for(int i=0; i<a.History.Count; i++) sw.WriteLine(a.History[i]);
             write_int(a.Text.Length);
             for(int i=0; i<a.Text.Length; i++) sw.WriteLine(a.Text[i]);
         }
@@ -250,6 +292,10 @@ namespace Buy_Or_Sail
             sw.WriteLine(user.Telephone);
             for (int i = 0; i < user.Id_adv.Count; i++) sw.Write(user.Id_adv[i].ToString() + " ");
             sw.WriteLine();
+            write_int(user.History.Count);
+            for (int i = 0; i < user.History.Count; i++)
+                if (user.History[i].Key) sw.WriteLine("1" + user.History[i].Value.ToString()); else
+                    sw.WriteLine("0" + user.History[i].Value.ToString());
         }
 
         public void sr_close()
@@ -282,6 +328,21 @@ namespace Buy_Or_Sail
         {
             if (a >= 'A' && a <= 'Z') return (char)(a - 'A' + 'a');
             return a;
+        }
+
+        public static DateTime get_date(string str)
+        {
+            int l = 0, k = 0;
+            int[] b = new int[111];
+            for (int i = 1; i < str.Length; i++) if (str[i] == '/' || str[i] == ' ' || str[i] == ':')
+                {
+                    int x = Convert.ToInt32(str.Substring(l, i - l));
+                    l = i + 1;
+                    b[k] = x;
+                    k++;
+                }
+            if (str[str.Length - 2] == 'P') b[3] += 12;
+            return new DateTime(b[2], b[0], b[1], b[3], b[4], b[5]);
         }
     }
 }

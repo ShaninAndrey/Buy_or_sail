@@ -24,6 +24,8 @@ namespace Buy_Or_Sail
             nick = "";
             db = DB;
             List<string> keys = DB.Keys;
+            this.Resize += Form1_Resize;
+            Theme_check.LostFocus += Theme_check_ChangeFocused;
             dataGridView1.Columns.Add("Id", "Id");
             dataGridView1.Columns.Add("Rating", "Rating");
             dataGridView1.Columns.Add("Theme", "Theme");
@@ -33,7 +35,7 @@ namespace Buy_Or_Sail
             dataGridView1.Columns[1].Width = dataGridView1.Width / 10;
             dataGridView1.Columns[2].Width = dataGridView1.Width / 5;
             dataGridView1.Columns[3].Width = dataGridView1.Width / 6;
-            dataGridView1.Columns[4].Width = dataGridView1.Width - dataGridView1.Columns[2].Width - 2 - dataGridView1.Columns[3].Width - dataGridView1.RowHeadersWidth;
+            dataGridView1.Columns[4].Width = dataGridView1.Width - dataGridView1.Columns[2].Width - 2 - dataGridView1.Columns[3].Width - dataGridView1.RowHeadersWidth - dataGridView1.Columns[1].Width;
             Theme_check.Items.Add("All Themes");
             for (int i = 0; i < keys.Count; i++)
             {
@@ -41,7 +43,7 @@ namespace Buy_Or_Sail
                 for (int q = 0; q < DB.Keys_id[keys[i]].Count; q++)
                 {
                     Advertisment a = DB.DB[keys[i]][DB.Keys_id[DB.Keys[i]][q]];
-                    dataGridView1.Rows.Add(a.Id,DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content);
+                    dataGridView1.Rows.Add(a.Id, DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content);
                 }
             }
         }
@@ -54,6 +56,7 @@ namespace Buy_Or_Sail
             Sell.Location = new Point(Sell.Location.X, Sell.Location.Y + 64);
             Theme_check.Location = new Point(Theme_check.Location.X, Theme_check.Location.Y + 64);
             Theme_string.Location = new Point(Theme_string.Location.X, Theme_string.Location.Y + 64);
+            listBox1.Location = new Point(listBox1.Location.X, listBox1.Location.Y + 64);
             for (int i = 0; i < db.Users[Nick].Id_adv.Count; i++) db.Advertisment[db.Users[Nick].Id_adv[i]].Rating = true;
             label2.Text = "Hello, " + Nick;
             label2.Visible = true;
@@ -84,6 +87,7 @@ namespace Buy_Or_Sail
             {
                 if (Theme_check.Text != "All Themes" && Theme_check.Text.Length > 0)
                 {
+                    if (!db.DB.ContainsKey(Theme_check.Text)) { dataGridView1.Rows.Clear(); return; }
                     for (int i = 0; i < db.Keys_id[Theme_check.Text].Count; i++)
                         if (Buy.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Buy" ||
                            Sell.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Sell" ||
@@ -92,7 +96,7 @@ namespace Buy_Or_Sail
                             if (my_advertisment.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].User_name == nick || !(my_advertisment.Checked))
                             {
                                 Advertisment a = db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]];
-                                dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                                dataGridView1.Rows.Add(a.Id, a.Rating, a.Theme, a.BuyOrSail, a.Content);
                             }
                         }
                     return;
@@ -105,7 +109,7 @@ namespace Buy_Or_Sail
                             if (my_advertisment.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].User_name == nick || !(my_advertisment.Checked))
                             {
                                 Advertisment a = db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]];
-                                dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                                dataGridView1.Rows.Add(a.Id, a.Rating, a.Theme, a.BuyOrSail, a.Content);
                             }
                         }
             }
@@ -114,6 +118,7 @@ namespace Buy_Or_Sail
                 List<string> tegs = get_tegs();
                 if (Theme_check.Text != "All Themes" && Theme_check.Text.Length > 0)
                 {
+                    if (!db.DB.ContainsKey(Theme_check.Text)) { dataGridView1.Rows.Clear(); return; }
                     for (int i = 0; i < db.Keys_id[Theme_check.Text].Count; i++)
                         if (Buy.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Buy" ||
                            Sell.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].BuyOrSail == "Sell" ||
@@ -124,7 +129,7 @@ namespace Buy_Or_Sail
                                 Advertisment a = db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]];
                                 for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
                                     {
-                                        dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                                        dataGridView1.Rows.Add(a.Id, a.Rating, a.Theme, a.BuyOrSail, a.Content);
                                         break;
                                     }
                             }
@@ -141,7 +146,7 @@ namespace Buy_Or_Sail
                                 Advertisment a = db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]];
                                 for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
                                     {
-                                        dataGridView1.Rows.Add(a.Id, a.User_name, a.Theme, a.BuyOrSail, a.Content, a.Text);
+                                        dataGridView1.Rows.Add(a.Id, a.Rating, a.Theme, a.BuyOrSail, a.Content, a);
                                         break;
                                     }
                             }
@@ -228,15 +233,63 @@ namespace Buy_Or_Sail
         {
             update_table();
         }
-        private void Theme_check_TextChanged(object sender, EventArgs e)
-        {           
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
         }
         private void Form1_Click(object sender, EventArgs e)
         {
+            listBox1.Visible = false;
+            update_table();
+        }
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+            Theme_check.Text = listBox1.Items[listBox1.SelectedIndex].ToString();
+            listBox1.Visible = false;
+        }
+        private void listBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = listBox1.Location.Y, y = this.Location.Y, z = MousePosition.Y;
+            int a = z - y - x - 32;
+            listBox1.SelectedIndex = a / 13;
+        }
+        private void Theme_check_ChangeFocused(object sender, EventArgs e)
+        {
+            if (!(listBox1.Focused)) listBox1.Visible = false;
+            update_table();
+        }
+        private void Theme_check_TextChanged(object sender, EventArgs e)
+        {
+            List<string> a = new List<string>();
+            foreach (string key in DB.DB.Keys)
+            {
+                int k = 0;
+                for (int i = 0; i < Math.Min(key.Length, Theme_check.Text.Length); i++)
+                    if (Program.big_small(key[i]) != Program.big_small(Theme_check.Text[i])) k++;
+                if (k < 2) a.Add(key);
+            }
+            listBox1.Items.Clear();
+            for (int i = 0; i < Math.Min(a.Count, 5); i++) listBox1.Items.Add(a[i]);
+            if (a.Count > 0)
+            {
+                listBox1.Size = new System.Drawing.Size(listBox1.Size.Width, 4 + 13 * Math.Min(5, a.Count));
+                listBox1.Visible = true;
+            }
+            else listBox1.Visible = false;
+        }
 
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            int x = this.Width, y = this.Height;
+
+        }
+        private void dataGridView1_Resize(int width, int height)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Statistic form = new Statistic(db);
+            form.Show();
         }
     }
 }

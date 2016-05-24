@@ -21,7 +21,6 @@ namespace Buy_Or_Sail
             textBox3.PasswordChar = '*';
         }
 
-
         private bool align_mask()
         {
             string mask = "0   00   0    ";
@@ -65,7 +64,10 @@ namespace Buy_Or_Sail
                 label4.Visible = true;
                 return;
             }
-            first.register_user(new Users(first.DB.Last_id, 0, nick, textBox2.Text, maskedTextBox1.Text, new List<int>()));
+            List<KeyValuePair<bool, DateTime>> a = new List<KeyValuePair<bool,DateTime>>();
+            a.Add(new KeyValuePair<bool,DateTime>(true, DateTime.Now));
+            first.register_user(new Users(first.DB.Last_id, 0, nick, textBox2.Text,
+                maskedTextBox1.Text, new List<int>(), a));
             this.Close();
         }
     }

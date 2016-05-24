@@ -1,22 +1,76 @@
-4
+2
 andrey
 123
 0
 (097) 977-2355
-
-aaa
-111
-0
-(123) 123-1233
-
+6 6 
+5
+15/24/2016 9:44:41 PM
+15/24/2016 9:45:03 PM
+15/24/2016 9:45:11 PM
+15/24/2016 10:24:31 PM
+15/24/2016 11:51:47 PM
 o111
 o111
-0
-(987) 654-3234
-
-a123
-123
 0
 (123) 123-1231
 
-0
+4
+15/24/2016 9:44:50 PM
+15/24/2016 9:45:25 PM
+15/24/2016 10:24:43 PM
+05/24/2016 11:27:53 PM
+5
+andrey
+Buy
+asda
+asd
+asd
+1
+5/24/2016 9:45:03 PM
+4
+sd
+asd
+asd
+asd
+o111
+Buy
+asda
+d
+d
+1
+5/24/2016 9:45:25 PM
+1
+d
+andrey
+Buy
+afafaf
+asd
+asd
+1
+5/24/2016 9:45:11 PM
+1
+sd
+andrey
+Buy
+afafaf
+ffasdfasdfasdfasdf
+f
+2
+5/24/2016 10:24:31 PM
+5/24/2016 11:52:30 PM
+5
+ffdsf
+fasd
+dfas
+fasd
+fsdfsdf
+andrey
+Sell
+afafaf
+asasa
+fds
+1
+5/24/2016 11:51:47 PM
+1
+sfdf

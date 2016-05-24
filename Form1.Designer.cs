@@ -41,6 +41,8 @@
             this.my_advertisment = new System.Windows.Forms.CheckBox();
             this.delete_advertisment = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,6 +72,7 @@
             this.Theme_check.Location = new System.Drawing.Point(12, 77);
             this.Theme_check.Name = "Theme_check";
             this.Theme_check.Size = new System.Drawing.Size(121, 21);
+            this.Theme_check.Sorted = true;
             this.Theme_check.TabIndex = 12;
             this.Theme_check.SelectedIndexChanged += new System.EventHandler(this.Theme_check_SelectedIndexChanged);
             this.Theme_check.TextChanged += new System.EventHandler(this.Theme_check_TextChanged);
@@ -144,7 +147,7 @@
             this.Sign_in.Name = "Sign_in";
             this.Sign_in.Size = new System.Drawing.Size(47, 65);
             this.Sign_in.TabIndex = 24;
-            this.Sign_in.Text = "Sign in";
+            this.Sign_in.Text = "Sign up";
             this.Sign_in.UseVisualStyleBackColor = true;
             this.Sign_in.Click += new System.EventHandler(this.Sign_in_Click);
             // 
@@ -180,11 +183,34 @@
             this.label2.TabIndex = 27;
             this.label2.Visible = false;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 96);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 17);
+            this.listBox1.TabIndex = 28;
+            this.listBox1.Visible = false;
+            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
+            this.listBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseMove);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(166, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Statistic";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 262);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.delete_advertisment);
             this.Controls.Add(this.my_advertisment);
@@ -199,7 +225,7 @@
             this.Controls.Add(this.Theme_check);
             this.Controls.Add(this.Advertisment_Add);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Buy or Sell";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -212,7 +238,6 @@
 
         private System.Windows.Forms.Button Advertisment_Add;
         private System.Windows.Forms.Label Theme_string;
-        private System.Windows.Forms.ComboBox Theme_check;
         private System.Windows.Forms.TextBox tegs_box;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.CheckBox Buy;
@@ -223,6 +248,9 @@
         private System.Windows.Forms.CheckBox my_advertisment;
         private System.Windows.Forms.Button delete_advertisment;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ComboBox Theme_check;
+        private System.Windows.Forms.Button button1;
     }
 }
 
