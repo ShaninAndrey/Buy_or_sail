@@ -61,7 +61,7 @@
             this.Sail.Size = new System.Drawing.Size(42, 17);
             this.Sail.TabIndex = 1;
             this.Sail.TabStop = true;
-            this.Sail.Text = "Sail";
+            this.Sail.Text = "Sell";
             this.Sail.UseVisualStyleBackColor = true;
             this.Sail.CheckedChanged += new System.EventHandler(this.Sail_CheckedChanged);
             // 

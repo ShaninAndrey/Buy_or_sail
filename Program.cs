@@ -280,7 +280,7 @@ namespace Buy_Or_Sail
             for (int i = 1; i < a.Tegs.Count; i++) tegs = tegs + " " + a.Tegs[i];
             sw.WriteLine(tegs);
             write_int(a.History.Count);
-            for(int i=0; i<a.History.Count; i++) sw.WriteLine(a.History[i]);
+            for(int i=0; i<a.History.Count; i++) sw.WriteLine(Program.set_date(a.History[i]));
             write_int(a.Text.Length);
             for(int i=0; i<a.Text.Length; i++) sw.WriteLine(a.Text[i]);
         }
@@ -294,8 +294,8 @@ namespace Buy_Or_Sail
             sw.WriteLine();
             write_int(user.History.Count);
             for (int i = 0; i < user.History.Count; i++)
-                if (user.History[i].Key) sw.WriteLine("1" + user.History[i].Value.ToString()); else
-                    sw.WriteLine("0" + user.History[i].Value.ToString());
+                if (user.History[i].Key) sw.WriteLine("1" + Program.set_date(user.History[i].Value)); else
+                    sw.WriteLine("0" + Program.set_date(user.History[i].Value));
         }
 
         public void sr_close()
@@ -343,6 +343,12 @@ namespace Buy_Or_Sail
                 }
             if (str[str.Length - 2] == 'P') b[3] += 12;
             return new DateTime(b[2], b[0], b[1], b[3], b[4], b[5]);
+        }
+        public static string set_date(DateTime date)
+        {
+            string s = date.Month.ToString()+"/"+date.Day.ToString()+"/"+date.Year.ToString()+" "+(date.Hour%12).ToString()+":"+date.Minute.ToString()+":"+date.Second.ToString();
+            if(date.Hour < 12) s = s+" AM"; else s = s+" PM";
+            return s;
         }
     }
 }
