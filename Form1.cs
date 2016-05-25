@@ -96,7 +96,7 @@ namespace Buy_Or_Sail
                             if (my_advertisment.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].User_name == nick || !(my_advertisment.Checked))
                             {
                                 Advertisment a = db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]];
-                                dataGridView1.Rows.Add(a.Id, a.Rating, a.Theme, a.BuyOrSail, a.Content);
+                                dataGridView1.Rows.Add(a.Id, DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content);
                             }
                         }
                     return;
@@ -109,7 +109,7 @@ namespace Buy_Or_Sail
                             if (my_advertisment.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].User_name == nick || !(my_advertisment.Checked))
                             {
                                 Advertisment a = db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]];
-                                dataGridView1.Rows.Add(a.Id, a.Rating, a.Theme, a.BuyOrSail, a.Content);
+                                dataGridView1.Rows.Add(a.Id, DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content);
                             }
                         }
             }
@@ -129,7 +129,7 @@ namespace Buy_Or_Sail
                                 Advertisment a = db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]];
                                 for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
                                     {
-                                        dataGridView1.Rows.Add(a.Id, a.Rating, a.Theme, a.BuyOrSail, a.Content);
+                                        dataGridView1.Rows.Add(a.Id, DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content);
                                         break;
                                     }
                             }
@@ -146,7 +146,7 @@ namespace Buy_Or_Sail
                                 Advertisment a = db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]];
                                 for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
                                     {
-                                        dataGridView1.Rows.Add(a.Id, a.Rating, a.Theme, a.BuyOrSail, a.Content, a);
+                                        dataGridView1.Rows.Add(a.Id, DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content, a);
                                         break;
                                     }
                             }

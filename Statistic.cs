@@ -11,9 +11,9 @@ namespace Buy_Or_Sail
 {
     public partial class Statistic : Form
     {
-        Graphics diagram;
         Dictionary<string, Users> users;
         List<KeyValuePair<bool, DateTime>> all;
+        Brush[] b;
         int n, m;
         string Ox, Oy;
 
@@ -35,21 +35,37 @@ namespace Buy_Or_Sail
             n = 10;
             m = 5;
             Oy = "Advertisments";
+            DateTime now = DateTime.Now;
+            comboBox13.Text = now.Year.ToString();
+            comboBox12.Text = now.Month.ToString();
+            comboBox11.Text = now.Day.ToString();
+            comboBox10.Text = now.Hour.ToString();
+            comboBox9.Text = now.Minute.ToString();
+            comboBox8.Text = now.Second.ToString();
+            for (int i = 2000; i < 2017; i++) { comboBox2.Items.Add(i); comboBox13.Items.Add(i); }
+            for (int i = 1; i < 13; i++) { comboBox3.Items.Add(i); comboBox12.Items.Add(i); }
+            for (int i = 1; i < 32; i++) { comboBox4.Items.Add(i); comboBox11.Items.Add(i); }
+            for (int i = 0; i < 24; i++) { comboBox5.Items.Add(i); comboBox10.Items.Add(i); }
+            for (int i = 0; i < 60; i++) { comboBox6.Items.Add(i); comboBox9.Items.Add(i); }
+            for (int i = 0; i < 60; i++) { comboBox7.Items.Add(i); comboBox8.Items.Add(i); }
+            b = PickBrush(users.Values.Count);
         }
 
-        void draw_diagram(List<KeyValuePair<bool, DateTime>> lst)
+        void draw_diagram(List<KeyValuePair<bool, DateTime>> lst, int start)
         {
-            int x0 = 100, y0 = 300, length = 600, height = 250;
+            int x0 = 300, y0 = 300, length = 500, height = 250;
             KeyValuePair<int, int> segmentation = get_segmentation(lst);
             KeyValuePair<int, int> borders = draw_decart(x0, y0, x0+length, y0, x0, y0-height, n, m, segmentation, get_int(lst[0].Value));
-            
-            int x = 0, y = 0;
+
+            int x = 0, y = start * borders.Value / segmentation.Value;
 
             Pen p = new Pen(Color.Red);
+            //Bitmap Pic = new Bitmap(Properties.Resources.thumb_up);
+            //Graphics red = pictureBox1.CreateGraphics();
             Graphics red = this.CreateGraphics();
             for (int i = 1; i < lst.Count; )
             {
-                int x1 = get_int(lst[i].Value) - get_int(lst[i - 1].Value), y1 = 0, k = i;
+                int x1 = get_int(lst[i].Value) - get_int(lst[i - 1].Value), y1 = start, k = i;
                 for (; i < lst.Count && get_int(lst[i].Value) == x1 + get_int(lst[k - 1].Value); i++)
                     if (lst[i].Key) y1++; else y1--;
 
@@ -63,9 +79,10 @@ namespace Buy_Or_Sail
             p.Dispose();
             red.Dispose();
         }
-
         KeyValuePair<int, int> draw_decart(int x0, int y0, int xx, int xy, int yx, int yy, int nx, int ny, KeyValuePair<int, int> segm, int start)
         {
+            //Bitmap Pic = new Bitmap(Properties.Resources.thumb_up);
+            //Graphics decart = pictureBox1.CreateGraphics();
             Graphics decart = this.CreateGraphics();
             Pen p = new Pen(Color.Black);
             decart.DrawLine(p, x0, y0, xx, xy);
@@ -94,15 +111,61 @@ namespace Buy_Or_Sail
             decart.Dispose();
             return new KeyValuePair<int, int>(x / nx, y / ny);
         }
+        void draw_circle(List<Users> lst)
+        {
+            int x0 = 150, y0 = 150, r = 100, n = lst.Count;
+            int sum = lst.Count, s=0;
+            for (int i = 0; i < lst.Count; i++) sum += lst[i].Rating;
+
+            Graphics g = this.CreateGraphics();
+            for (int i = 0; i < lst.Count; i++)
+            {
+                g.FillPie(b[i], x0 - r, y0 - r, r * 2, r * 2, s * 360 / sum, (lst[i].Rating + 1) * 360 / sum);
+                s += lst[i].Rating + 1;
+            }
+            g.Dispose();
+        }
+        void draw_borders(List<Users> lst, string ths)
+        {
+            int x0 = 150, y0 = 150, r = 100, n = lst.Count;
+            int sum = lst.Count, s = 0;
+            for (int i = 0; i < lst.Count; i++) sum += lst[i].Rating;
+
+            Pen p = new Pen(Color.Black);
+            Graphics g = this.CreateGraphics();
+            for (int i = 0; i <= 20; i++) g.DrawEllipse(p, Convert.ToInt32(x0 - r - 0.1 * i), Convert.ToInt32(y0 - r - 0.1 * i), Convert.ToInt32((0.1 * i + r) * 2), Convert.ToInt32((0.1 * i + r) * 2));
+            lst.Add(lst[0]);
+            for (int i = 0; i < lst.Count; i++)
+            {
+                int su = s + lst[i].Rating + 1, x1 = Convert.ToInt32(Math.Cos(Math.PI * 2 * su / sum) * r) + x0, y1 = y0 + Convert.ToInt32(Math.Sin(Math.PI * 2 * su / sum) * r);
+                if (ths == lst[i].User_name || i == lst.Count-1 && ths == lst[1].User_name || (i < lst.Count - 1 && ths == lst[i + 1].User_name))
+                {
+                    p.Color = Color.Gold;
+                    if(ths == lst[i].User_name) for (int q = 0; q <= 20; q++)
+                        g.DrawArc(p, Convert.ToInt32(x0 - r - 0.1 * q), Convert.ToInt32(y0 - r - 0.1 * q),
+                                    Convert.ToInt32((0.1 * q + r) * 2), Convert.ToInt32((0.1 * q + r) * 2),
+                                    s * 360 / sum, (lst[i].Rating + 1) * 360 / sum);
+                }
+                g.DrawLine(p, x0, y0, x1, y1);
+                g.DrawLine(p, x0 - 1, y0, x1 - 1, y1);
+                g.DrawLine(p, x0 + 1, y0, x1 + 1, y1);
+                g.DrawLine(p, x0, y0 - 1, x1, y1 - 1);
+                g.DrawLine(p, x0, y0 + 1, x1, y1 + 1);
+                p.Color = Color.Black;
+                s += lst[i].Rating + 1;
+            }
+            p.Dispose();
+            g.Dispose();
+        }
 
         private void Statistic_Load(object sender, EventArgs e)
         {
         }
-
         private void Statistic_Shown(object sender, EventArgs e)
         {
-            List<Users> a = new List<Users>(users.Values);
-            draw_diagram(all);
+            draw_diagram(all, 0);
+            draw_circle(new List<Users>(users.Values));
+            draw_borders(new List<Users>(users.Values), "All users");
         }
 
         KeyValuePair<int, int> get_segmentation(List<KeyValuePair<bool, DateTime>> a)
@@ -188,14 +251,69 @@ namespace Buy_Or_Sail
         {
             return a.Value.CompareTo(b.Value);
         }
+        private Brush[] PickBrush(int n)
+        {
+            Brush[] res = new Brush[n];
+            for(int i=0; i<n; i++) res[i] = Brushes.Transparent;
+
+            Random rnd = new Random();
+
+            Type brushesType = typeof(Brushes);
+            System.Reflection.PropertyInfo[] properties = brushesType.GetProperties();
+
+            for (int i = 0; i < n; i++)
+            {
+                int random = rnd.Next(properties.Length);
+                res[i] = (Brush)properties[random].GetValue(null, null);
+            }
+
+            return res;
+        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Graphics a = this.CreateGraphics();
-            a.Clear(Color.White);
-            if (comboBox1.SelectedItem.ToString() == "All users")
-                draw_diagram(all); else
-                draw_diagram(users[comboBox1.SelectedItem.ToString()].History);
+            a.Clear(SystemColors.Control);
+            a.Dispose();
+            draw_circle(new List<Users>(users.Values));
+            draw_borders(new List<Users>(users.Values), comboBox1.Text);
+            List<KeyValuePair<bool, DateTime>> b;
+            int start = 0;
+            if (comboBox1.Text == "All users") b = all;
+            else
+                b = users[comboBox1.SelectedItem.ToString()].History;
+            DateTime l = new DateTime(Convert.ToInt32(comboBox2.Text),
+                Convert.ToInt32(comboBox3.Text),
+                Convert.ToInt32(comboBox4.Text),
+                Convert.ToInt32(comboBox5.Text),
+                Convert.ToInt32(comboBox6.Text),
+                Convert.ToInt32(comboBox7.Text));
+            DateTime r = new DateTime(Convert.ToInt32(comboBox13.Text),
+                Convert.ToInt32(comboBox12.Text),
+                Convert.ToInt32(comboBox11.Text),
+                Convert.ToInt32(comboBox10.Text),
+                Convert.ToInt32(comboBox9.Text),
+                Convert.ToInt32(comboBox8.Text));
+            if (l >= r) { textBox9.Text = "Your date are invalid"; textBox9.Visible = true; return; }
+            int first = 0, last = b.Count;
+
+            for (int i = 0; i < b.Count; i++)
+            {
+                if (b[i].Value < l)
+                {
+                    if (b[i].Key) start++; else start--;
+                    first++;
+                }
+                if (b[i].Value > r) last--;
+            }
+            if (first >= last - 1) { textBox9.Text = "No one changes in this range"; textBox9.Visible = true; return; }
+            textBox9.Visible = false;
+            draw_diagram(b.GetRange(first, last), start);
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
