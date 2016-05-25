@@ -16,9 +16,11 @@ namespace Buy_Or_Sail
         public add_advertisment(Form1 First)
         {
             first = First;
+            this.MaximizeBox = false;
             InitializeComponent();
             foreach (string key in first.DB.DB.Keys) Theme_check.Items.Add(key);
             Theme_check.LostFocus += new System.EventHandler(Theme_check_ChangeFocused);
+            //System.Windows.Forms.VisualStyles.VisualStyleElement.ComboBox.DropDownButton.
         }
 
         private void click_text(TextBox a)
@@ -70,7 +72,7 @@ namespace Buy_Or_Sail
                 label2.Visible = true;
                 return;
             }
-            Add_success form = new Add_success(this);
+            Success form = new Success(this);
             form.Show();
         }
         private void Theme_check_TextChanged(object sender, EventArgs e)
@@ -141,6 +143,14 @@ namespace Buy_Or_Sail
             int x = listBox1.Location.Y, y = this.Location.Y, z = MousePosition.Y;
             int a = z - y - x - 32;
             listBox1.SelectedIndex = a / 13;
+        }
+        private void Theme_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox1.Visible = false;
+        }
+        private void Theme_check_Click(object sender, EventArgs e)
+        {
+            listBox1.Visible = false;
         }
     }
 }

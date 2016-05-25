@@ -35,9 +35,10 @@
             this.Content = new System.Windows.Forms.TextBox();
             this.Text = new System.Windows.Forms.TextBox();
             this.Tegs = new System.Windows.Forms.TextBox();
-            this.Advertisment_Add = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Buy
@@ -66,26 +67,31 @@
             // 
             // Theme_check
             // 
+            this.Theme_check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.Theme_check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Theme_check.FormattingEnabled = true;
             this.Theme_check.Location = new System.Drawing.Point(26, 72);
             this.Theme_check.Name = "Theme_check";
             this.Theme_check.Size = new System.Drawing.Size(121, 21);
             this.Theme_check.TabIndex = 3;
+            this.Theme_check.SelectedIndexChanged += new System.EventHandler(this.Theme_check_SelectedIndexChanged);
             this.Theme_check.SelectionChangeCommitted += new System.EventHandler(this.Theme_check_SelectionChangeCommitted);
             this.Theme_check.TextChanged += new System.EventHandler(this.Theme_check_TextChanged);
+            this.Theme_check.Click += new System.EventHandler(this.Theme_check_Click);
             // 
             // Theme_string
             // 
             this.Theme_string.AutoSize = true;
             this.Theme_string.Location = new System.Drawing.Point(23, 50);
             this.Theme_string.Name = "Theme_string";
-            this.Theme_string.Size = new System.Drawing.Size(73, 13);
+            this.Theme_string.Size = new System.Drawing.Size(75, 13);
             this.Theme_string.TabIndex = 4;
-            this.Theme_string.Text = "Check_theme";
+            this.Theme_string.Text = "Choose theme";
             this.Theme_string.Click += new System.EventHandler(this.Theme_string_Click);
             // 
             // Content
             // 
+            this.Content.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
             this.Content.Location = new System.Drawing.Point(176, 12);
             this.Content.Name = "Content";
             this.Content.Size = new System.Drawing.Size(386, 20);
@@ -95,6 +101,7 @@
             // 
             // Text
             // 
+            this.Text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
             this.Text.Location = new System.Drawing.Point(176, 38);
             this.Text.Multiline = true;
             this.Text.Name = "Text";
@@ -106,22 +113,13 @@
             // 
             // Tegs
             // 
+            this.Tegs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
             this.Tegs.Location = new System.Drawing.Point(176, 285);
             this.Tegs.Name = "Tegs";
             this.Tegs.Size = new System.Drawing.Size(386, 20);
             this.Tegs.TabIndex = 9;
             this.Tegs.Text = "Tegs";
             this.Tegs.Click += new System.EventHandler(this.Tegs_Click);
-            // 
-            // Advertisment_Add
-            // 
-            this.Advertisment_Add.Location = new System.Drawing.Point(26, 240);
-            this.Advertisment_Add.Name = "Advertisment_Add";
-            this.Advertisment_Add.Size = new System.Drawing.Size(121, 65);
-            this.Advertisment_Add.TabIndex = 10;
-            this.Advertisment_Add.Text = "Add Advertisment";
-            this.Advertisment_Add.UseVisualStyleBackColor = true;
-            this.Advertisment_Add.Click += new System.EventHandler(this.Advertisment_Add_Click);
             // 
             // label2
             // 
@@ -137,6 +135,7 @@
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(26, 91);
             this.listBox1.Name = "listBox1";
@@ -148,14 +147,26 @@
             this.listBox1.MouseHover += new System.EventHandler(this.listBox1_MouseHover);
             this.listBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseMove);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Buy_Or_Sail.Properties.Resources.But5;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Location = new System.Drawing.Point(26, 244);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(121, 35);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.Advertisment_Add_Click);
+            // 
             // add_advertisment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(574, 317);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Advertisment_Add);
             this.Controls.Add(this.Tegs);
             this.Controls.Add(this.Text);
             this.Controls.Add(this.Content);
@@ -166,6 +177,7 @@
             this.Name = "add_advertisment";
             this.Load += new System.EventHandler(this.add_advertisment_Load);
             this.Click += new System.EventHandler(this.add_advertisment_Click);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,8 +192,8 @@
         private System.Windows.Forms.TextBox Content;
         private System.Windows.Forms.TextBox Text;
         private System.Windows.Forms.TextBox Tegs;
-        private System.Windows.Forms.Button Advertisment_Add;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

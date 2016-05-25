@@ -21,16 +21,18 @@ namespace Buy_Or_Sail
         public Form1(Table DB)
         {
             InitializeComponent();
+            this.MaximizeBox = false;
             nick = "";
             db = DB;
             List<string> keys = DB.Keys;
             this.Resize += Form1_Resize;
             Theme_check.LostFocus += Theme_check_ChangeFocused;
-            dataGridView1.Columns.Add("Id", "Id");
-            dataGridView1.Columns.Add("Rating", "Rating");
-            dataGridView1.Columns.Add("Theme", "Theme");
-            dataGridView1.Columns.Add("BOS", "Buy or sell");
-            dataGridView1.Columns.Add("Content", "Content");
+            dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(250, 243, 217);
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(144, 250, 136);
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(250, 223, 128);
+            dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].Width = dataGridView1.Width / 10;
             dataGridView1.Columns[2].Width = dataGridView1.Width / 5;
@@ -62,10 +64,10 @@ namespace Buy_Or_Sail
             label2.Visible = true;
             my_advertisment.Visible = true;
             label1.Visible = false;
-            Sign_in.Visible = false;
-            Log_in.Visible = false;
-            Advertisment_Add.Visible = true;
-            delete_advertisment.Visible = true;
+            pictureBox2.Visible = false;
+            pictureBox1.Visible = false;
+            pictureBox3.Visible = true;
+            pictureBox4.Visible = true;
         }
         public void register_user(Users user)
         {
@@ -161,6 +163,7 @@ namespace Buy_Or_Sail
         }
         private void Theme_check_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listBox1.Visible = false;
             update_table();
         }
         private void dataGridView1_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -192,7 +195,7 @@ namespace Buy_Or_Sail
         }
         private void delete_advertisment_Click(object sender, EventArgs e)
         {
-            Add_success a = new Add_success(this);
+            Success a = new Success(this);
             a.Show();
         }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -206,7 +209,6 @@ namespace Buy_Or_Sail
         }
         private List<string> get_tegs()
         {
-            Sign_in.Text = "asdf";
             List<string> teg = new List<string>();
             int l = 0;
             for (int i = 1; i < tegs_box.Text.Length; i++) if (tegs_box.Text[i] == ' ' && tegs_box.Text[i - 1] != ' ')
@@ -276,6 +278,15 @@ namespace Buy_Or_Sail
             }
             else listBox1.Visible = false;
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Statistic form = new Statistic(db);
+            form.Show();
+        }
+        private void Theme_check_Click(object sender, EventArgs e)
+        {
+            listBox1.Visible = false;
+        }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
@@ -284,12 +295,6 @@ namespace Buy_Or_Sail
         }
         private void dataGridView1_Resize(int width, int height)
         {
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Statistic form = new Statistic(db);
-            form.Show();
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Buy_Or_Sail
                 comboBox1.Items.Add(first.User_name);
             }
             all.Sort(CompareTo);
-            n = 10;
+            n = 9;
             m = 5;
             Oy = "Advertisments";
             DateTime now = DateTime.Now;
@@ -42,30 +42,39 @@ namespace Buy_Or_Sail
             comboBox10.Text = now.Hour.ToString();
             comboBox9.Text = now.Minute.ToString();
             comboBox8.Text = now.Second.ToString();
-            for (int i = 2000; i < 2017; i++) { comboBox2.Items.Add(i); comboBox13.Items.Add(i); }
+            for (int i = 2000; i < DateTime.Now.Year+1; i++) { comboBox2.Items.Add(i); comboBox13.Items.Add(i); }
             for (int i = 1; i < 13; i++) { comboBox3.Items.Add(i); comboBox12.Items.Add(i); }
             for (int i = 1; i < 32; i++) { comboBox4.Items.Add(i); comboBox11.Items.Add(i); }
             for (int i = 0; i < 24; i++) { comboBox5.Items.Add(i); comboBox10.Items.Add(i); }
             for (int i = 0; i < 60; i++) { comboBox6.Items.Add(i); comboBox9.Items.Add(i); }
             for (int i = 0; i < 60; i++) { comboBox7.Items.Add(i); comboBox8.Items.Add(i); }
             b = PickBrush(users.Values.Count);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
 
+        void draw_user(Brush b, Users user, int x, int y)
+        {
+            Graphics g = this.CreateGraphics();
+            g.FillRectangle(b, x, y, 10, 10);
+            g.DrawRectangle(new Pen(Color.Black), x, y, 10, 10);
+            g.DrawString(user.User_name + " : " + user.Rating.ToString(), this.Font, Brushes.Black, new Point(x + 20, y-2));
+            g.Dispose();
+        }
         void draw_diagram(List<KeyValuePair<bool, DateTime>> lst, int start)
         {
             int x0 = 300, y0 = 300, length = 500, height = 250;
-            KeyValuePair<int, int> segmentation = get_segmentation(lst);
+            KeyValuePair<int, int> segmentation = get_segmentation(lst, start);
             KeyValuePair<int, int> borders = draw_decart(x0, y0, x0+length, y0, x0, y0-height, n, m, segmentation, get_int(lst[0].Value));
+            y0 -= start * borders.Value / segmentation.Value;
 
-            int x = 0, y = start * borders.Value / segmentation.Value;
+            int x = 0, y = 0;
 
             Pen p = new Pen(Color.Red);
-            //Bitmap Pic = new Bitmap(Properties.Resources.thumb_up);
-            //Graphics red = pictureBox1.CreateGraphics();
             Graphics red = this.CreateGraphics();
             for (int i = 1; i < lst.Count; )
             {
-                int x1 = get_int(lst[i].Value) - get_int(lst[i - 1].Value), y1 = start, k = i;
+                int x1 = get_int(lst[i].Value) - get_int(lst[i - 1].Value), y1 = 0, k = i;
                 for (; i < lst.Count && get_int(lst[i].Value) == x1 + get_int(lst[k - 1].Value); i++)
                     if (lst[i].Key) y1++; else y1--;
 
@@ -81,8 +90,6 @@ namespace Buy_Or_Sail
         }
         KeyValuePair<int, int> draw_decart(int x0, int y0, int xx, int xy, int yx, int yy, int nx, int ny, KeyValuePair<int, int> segm, int start)
         {
-            //Bitmap Pic = new Bitmap(Properties.Resources.thumb_up);
-            //Graphics decart = pictureBox1.CreateGraphics();
             Graphics decart = this.CreateGraphics();
             Pen p = new Pen(Color.Black);
             decart.DrawLine(p, x0, y0, xx, xy);
@@ -113,22 +120,23 @@ namespace Buy_Or_Sail
         }
         void draw_circle(List<Users> lst)
         {
-            int x0 = 150, y0 = 150, r = 100, n = lst.Count;
-            int sum = lst.Count, s=0;
+            int x0 = 160, y0 = 200, r = 80, n = lst.Count;
+            int sum = 0, s=0;
             for (int i = 0; i < lst.Count; i++) sum += lst[i].Rating;
 
             Graphics g = this.CreateGraphics();
+            Random rand = new Random();
             for (int i = 0; i < lst.Count; i++)
             {
-                g.FillPie(b[i], x0 - r, y0 - r, r * 2, r * 2, s * 360 / sum, (lst[i].Rating + 1) * 360 / sum);
-                s += lst[i].Rating + 1;
+                g.FillPie(b[i], x0 - r, y0 - r, r * 2, r * 2, s * 360 / sum, lst[i].Rating * 360 / sum);
+                s += lst[i].Rating;
             }
             g.Dispose();
         }
         void draw_borders(List<Users> lst, string ths)
         {
-            int x0 = 150, y0 = 150, r = 100, n = lst.Count;
-            int sum = lst.Count, s = 0;
+            int x0 = 160, y0 = 200, r = 80, n = lst.Count;
+            int sum = 0, s = 0;
             for (int i = 0; i < lst.Count; i++) sum += lst[i].Rating;
 
             Pen p = new Pen(Color.Black);
@@ -137,14 +145,14 @@ namespace Buy_Or_Sail
             lst.Add(lst[0]);
             for (int i = 0; i < lst.Count; i++)
             {
-                int su = s + lst[i].Rating + 1, x1 = Convert.ToInt32(Math.Cos(Math.PI * 2 * su / sum) * r) + x0, y1 = y0 + Convert.ToInt32(Math.Sin(Math.PI * 2 * su / sum) * r);
+                int su = s + lst[i].Rating, x1 = Convert.ToInt32(Math.Cos(Math.PI * 2 * su / sum) * r) + x0, y1 = y0 + Convert.ToInt32(Math.Sin(Math.PI * 2 * su / sum) * r);
                 if (ths == lst[i].User_name || i == lst.Count-1 && ths == lst[1].User_name || (i < lst.Count - 1 && ths == lst[i + 1].User_name))
                 {
                     p.Color = Color.Gold;
                     if(ths == lst[i].User_name) for (int q = 0; q <= 20; q++)
                         g.DrawArc(p, Convert.ToInt32(x0 - r - 0.1 * q), Convert.ToInt32(y0 - r - 0.1 * q),
                                     Convert.ToInt32((0.1 * q + r) * 2), Convert.ToInt32((0.1 * q + r) * 2),
-                                    s * 360 / sum, (lst[i].Rating + 1) * 360 / sum);
+                                    s * 360 / sum, lst[i].Rating * 360 / sum);
                 }
                 g.DrawLine(p, x0, y0, x1, y1);
                 g.DrawLine(p, x0 - 1, y0, x1 - 1, y1);
@@ -152,7 +160,7 @@ namespace Buy_Or_Sail
                 g.DrawLine(p, x0, y0 - 1, x1, y1 - 1);
                 g.DrawLine(p, x0, y0 + 1, x1, y1 + 1);
                 p.Color = Color.Black;
-                s += lst[i].Rating + 1;
+                s += lst[i].Rating;
             }
             p.Dispose();
             g.Dispose();
@@ -164,31 +172,38 @@ namespace Buy_Or_Sail
         private void Statistic_Shown(object sender, EventArgs e)
         {
             draw_diagram(all, 0);
+            Graphics g = this.CreateGraphics();
+            g.DrawString("Rating :", this.Font, Brushes.Black, new Point(10, 15));
+            for (int i = 0; i < users.Values.Count; i++)
+            {
+                draw_user(b[i], new List<Users>(users.Values)[i], 20, 50 + 20 * i);
+            }
             draw_circle(new List<Users>(users.Values));
             draw_borders(new List<Users>(users.Values), "All users");
         }
 
-        KeyValuePair<int, int> get_segmentation(List<KeyValuePair<bool, DateTime>> a)
+        KeyValuePair<int, int> get_segmentation(List<KeyValuePair<bool, DateTime>> a, int start)
         {
             int first = get_min(a.First().Value);
             int last = get_min(a.Last().Value);
             int x_min = last - first;
             Ox = "Minutes";
-            if (x_min > 600)
+            if (x_min > 120)
             {
                 first = get_hour(a.First().Value);
                 last = get_hour(a.Last().Value);
                 x_min = last - first;
                 Ox = "Hours";
             }
-            if (x_min > 240)
+            if (Ox[0] == 'H' && x_min > 48)
             {
                 first = get_day(a.First().Value);
                 last = get_day(a.Last().Value);
                 x_min = last - first;
                 Ox = "Days";
+                n = 6;
             }
-            int l = 0, mx = 0;
+            int l = start, mx = 0;
             for (int i = 1; i < a.Count; i++) { if (a[i].Key) l++; else l--; mx = Math.Max(l, mx); }
             return new KeyValuePair<int, int>(x_min / n + 1, mx / m + 1);
         }
@@ -254,34 +269,28 @@ namespace Buy_Or_Sail
         private Brush[] PickBrush(int n)
         {
             Brush[] res = new Brush[n];
-            for(int i=0; i<n; i++) res[i] = Brushes.Transparent;
-
-            Random rnd = new Random();
-
-            Type brushesType = typeof(Brushes);
-            System.Reflection.PropertyInfo[] properties = brushesType.GetProperties();
-
-            for (int i = 0; i < n; i++)
-            {
-                int random = rnd.Next(properties.Length);
-                res[i] = (Brush)properties[random].GetValue(null, null);
-            }
-
+            Random rand = new Random();
+            for(int i=0; i<n; i++) res[i] = new SolidBrush(Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)));
             return res;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Graphics a = this.CreateGraphics();
-            a.Clear(SystemColors.Control);
+            a.Clear(Color.FromArgb(250, 243, 217));
+            a.DrawString("Rating :", this.Font, Brushes.Black, new Point(10, 15));
+            for (int i = 0; i < users.Values.Count; i++)
+            {
+                draw_user(b[i], new List<Users>(users.Values)[i], 20, 50 + 20 * i);
+            }
             a.Dispose();
             draw_circle(new List<Users>(users.Values));
             draw_borders(new List<Users>(users.Values), comboBox1.Text);
-            List<KeyValuePair<bool, DateTime>> b;
+            List<KeyValuePair<bool, DateTime>> c;
             int start = 0;
-            if (comboBox1.Text == "All users") b = all;
+            if (comboBox1.Text == "All users") c = all;
             else
-                b = users[comboBox1.SelectedItem.ToString()].History;
+               c = users[comboBox1.SelectedItem.ToString()].History;
             DateTime l = new DateTime(Convert.ToInt32(comboBox2.Text),
                 Convert.ToInt32(comboBox3.Text),
                 Convert.ToInt32(comboBox4.Text),
@@ -295,20 +304,20 @@ namespace Buy_Or_Sail
                 Convert.ToInt32(comboBox9.Text),
                 Convert.ToInt32(comboBox8.Text));
             if (l >= r) { textBox9.Text = "Your date are invalid"; textBox9.Visible = true; return; }
-            int first = 0, last = b.Count;
+            int first = 0, last = c.Count - 1;
 
-            for (int i = 0; i < b.Count; i++)
+            for (int i = 0; i < c.Count; i++)
             {
-                if (b[i].Value < l)
+                if (c[i].Value < l)
                 {
-                    if (b[i].Key) start++; else start--;
+                    if (c[i].Key) start++; else start--;
                     first++;
                 }
-                if (b[i].Value > r) last--;
+                if (c[i].Value > r) last--;
             }
-            if (first >= last - 1) { textBox9.Text = "No one changes in this range"; textBox9.Visible = true; return; }
+            if (first >= last) { textBox9.Text = "No one changes in this range"; textBox9.Visible = true; return; }
             textBox9.Visible = false;
-            draw_diagram(b.GetRange(first, last), start);
+            draw_diagram(c.GetRange(first, last-first+1), start);
         }
 
         private void label9_Click(object sender, EventArgs e)

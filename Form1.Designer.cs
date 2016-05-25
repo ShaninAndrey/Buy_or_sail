@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Advertisment_Add = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Theme_string = new System.Windows.Forms.Label();
             this.Theme_check = new System.Windows.Forms.ComboBox();
             this.tegs_box = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Theme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Buy = new System.Windows.Forms.CheckBox();
             this.Sell = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Log_in = new System.Windows.Forms.Button();
-            this.Sign_in = new System.Windows.Forms.Button();
             this.my_advertisment = new System.Windows.Forms.CheckBox();
-            this.delete_advertisment = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Advertisment_Add
-            // 
-            this.Advertisment_Add.Location = new System.Drawing.Point(12, 185);
-            this.Advertisment_Add.Name = "Advertisment_Add";
-            this.Advertisment_Add.Size = new System.Drawing.Size(121, 24);
-            this.Advertisment_Add.TabIndex = 11;
-            this.Advertisment_Add.Text = "Add Advertisment";
-            this.Advertisment_Add.UseVisualStyleBackColor = true;
-            this.Advertisment_Add.Visible = false;
-            this.Advertisment_Add.Click += new System.EventHandler(this.Advertisment_Add_Click);
             // 
             // Theme_string
             // 
@@ -68,6 +68,8 @@
             // 
             // Theme_check
             // 
+            this.Theme_check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.Theme_check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Theme_check.FormattingEnabled = true;
             this.Theme_check.Location = new System.Drawing.Point(12, 77);
             this.Theme_check.Name = "Theme_check";
@@ -76,9 +78,11 @@
             this.Theme_check.TabIndex = 12;
             this.Theme_check.SelectedIndexChanged += new System.EventHandler(this.Theme_check_SelectedIndexChanged);
             this.Theme_check.TextChanged += new System.EventHandler(this.Theme_check_TextChanged);
+            this.Theme_check.Click += new System.EventHandler(this.Theme_check_Click);
             // 
             // tegs_box
             // 
+            this.tegs_box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
             this.tegs_box.Location = new System.Drawing.Point(166, 12);
             this.tegs_box.Multiline = true;
             this.tegs_box.Name = "tegs_box";
@@ -89,7 +93,22 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(223)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(250)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Rating,
+            this.Theme,
+            this.BOS,
+            this.Content});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridView1.Location = new System.Drawing.Point(166, 50);
             this.dataGridView1.Name = "dataGridView1";
@@ -98,6 +117,40 @@
             this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing_1);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Rating
+            // 
+            this.Rating.HeaderText = "Rating";
+            this.Rating.Name = "Rating";
+            this.Rating.ReadOnly = true;
+            this.Rating.Width = 50;
+            // 
+            // Theme
+            // 
+            this.Theme.HeaderText = "Theme";
+            this.Theme.Name = "Theme";
+            this.Theme.ReadOnly = true;
+            // 
+            // BOS
+            // 
+            this.BOS.HeaderText = "Buy or Sell";
+            this.BOS.Name = "BOS";
+            this.BOS.ReadOnly = true;
+            this.BOS.Width = 80;
+            // 
+            // Content
+            // 
+            this.Content.HeaderText = "Content";
+            this.Content.Name = "Content";
+            this.Content.ReadOnly = true;
+            this.Content.Width = 260;
             // 
             // Buy
             // 
@@ -131,26 +184,6 @@
             this.label1.Text = "If you want to add or delete\r\nyour advertisments, you\r\nhave to log in. If your\r\na" +
     "ccount doesn\'t already\r\nexist, you must create it.";
             // 
-            // Log_in
-            // 
-            this.Log_in.Location = new System.Drawing.Point(12, 185);
-            this.Log_in.Name = "Log_in";
-            this.Log_in.Size = new System.Drawing.Size(47, 65);
-            this.Log_in.TabIndex = 23;
-            this.Log_in.Text = "Log in";
-            this.Log_in.UseVisualStyleBackColor = true;
-            this.Log_in.Click += new System.EventHandler(this.Log_in_Click);
-            // 
-            // Sign_in
-            // 
-            this.Sign_in.Location = new System.Drawing.Point(86, 185);
-            this.Sign_in.Name = "Sign_in";
-            this.Sign_in.Size = new System.Drawing.Size(47, 65);
-            this.Sign_in.TabIndex = 24;
-            this.Sign_in.Text = "Sign up";
-            this.Sign_in.UseVisualStyleBackColor = true;
-            this.Sign_in.Click += new System.EventHandler(this.Sign_in_Click);
-            // 
             // my_advertisment
             // 
             this.my_advertisment.AutoSize = true;
@@ -163,17 +196,6 @@
             this.my_advertisment.Visible = false;
             this.my_advertisment.CheckedChanged += new System.EventHandler(this.my_advertisment_CheckedChanged);
             // 
-            // delete_advertisment
-            // 
-            this.delete_advertisment.Location = new System.Drawing.Point(12, 226);
-            this.delete_advertisment.Name = "delete_advertisment";
-            this.delete_advertisment.Size = new System.Drawing.Size(121, 23);
-            this.delete_advertisment.TabIndex = 26;
-            this.delete_advertisment.Text = "Delete Advertisment";
-            this.delete_advertisment.UseVisualStyleBackColor = true;
-            this.delete_advertisment.Visible = false;
-            this.delete_advertisment.Click += new System.EventHandler(this.delete_advertisment_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -185,6 +207,7 @@
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 96);
             this.listBox1.Name = "listBox1";
@@ -194,28 +217,77 @@
             this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             this.listBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseMove);
             // 
-            // button1
+            // pictureBox5
             // 
-            this.button1.Location = new System.Drawing.Point(166, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Statistic";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.pictureBox5.BackgroundImage = global::Buy_Or_Sail.Properties.Resources.Statistic;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox5.Location = new System.Drawing.Point(152, 17);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(124, 35);
+            this.pictureBox5.TabIndex = 34;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::Buy_Or_Sail.Properties.Resources.But6;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox4.Location = new System.Drawing.Point(15, 221);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(128, 33);
+            this.pictureBox4.TabIndex = 33;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Visible = false;
+            this.pictureBox4.Click += new System.EventHandler(this.delete_advertisment_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::Buy_Or_Sail.Properties.Resources.But5;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox3.Location = new System.Drawing.Point(15, 180);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(126, 32);
+            this.pictureBox3.TabIndex = 32;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
+            this.pictureBox3.Click += new System.EventHandler(this.Advertisment_Add_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::Buy_Or_Sail.Properties.Resources.But4;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox2.Location = new System.Drawing.Point(15, 221);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(128, 34);
+            this.pictureBox2.TabIndex = 31;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.Sign_in_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Buy_Or_Sail.Properties.Resources.But3;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 180);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(126, 35);
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.Log_in_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(712, 262);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.delete_advertisment);
             this.Controls.Add(this.my_advertisment);
-            this.Controls.Add(this.Sign_in);
-            this.Controls.Add(this.Log_in);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Sell);
             this.Controls.Add(this.Buy);
@@ -223,12 +295,16 @@
             this.Controls.Add(this.tegs_box);
             this.Controls.Add(this.Theme_string);
             this.Controls.Add(this.Theme_check);
-            this.Controls.Add(this.Advertisment_Add);
             this.Name = "Form1";
             this.Text = "Buy or Sell";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,21 +312,26 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Advertisment_Add;
         private System.Windows.Forms.Label Theme_string;
         private System.Windows.Forms.TextBox tegs_box;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.CheckBox Buy;
         private System.Windows.Forms.CheckBox Sell;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Log_in;
-        private System.Windows.Forms.Button Sign_in;
         private System.Windows.Forms.CheckBox my_advertisment;
-        private System.Windows.Forms.Button delete_advertisment;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ComboBox Theme_check;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rating;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Theme;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BOS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Content;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }
 

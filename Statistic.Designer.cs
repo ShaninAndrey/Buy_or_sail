@@ -54,6 +54,8 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(905, 14);
             this.comboBox1.Name = "comboBox1";
@@ -65,6 +67,8 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(905, 73);
             this.comboBox2.Name = "comboBox2";
@@ -75,6 +79,8 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(905, 100);
             this.comboBox3.Name = "comboBox3";
@@ -85,6 +91,8 @@
             // 
             // comboBox4
             // 
+            this.comboBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(905, 127);
             this.comboBox4.Name = "comboBox4";
@@ -95,6 +103,8 @@
             // 
             // comboBox5
             // 
+            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Location = new System.Drawing.Point(905, 154);
             this.comboBox5.Name = "comboBox5";
@@ -105,6 +115,8 @@
             // 
             // comboBox6
             // 
+            this.comboBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Location = new System.Drawing.Point(905, 181);
             this.comboBox6.Name = "comboBox6";
@@ -115,6 +127,8 @@
             // 
             // comboBox7
             // 
+            this.comboBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Location = new System.Drawing.Point(905, 208);
             this.comboBox7.Name = "comboBox7";
@@ -125,6 +139,8 @@
             // 
             // comboBox8
             // 
+            this.comboBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox8.FormattingEnabled = true;
             this.comboBox8.Location = new System.Drawing.Point(979, 208);
             this.comboBox8.Name = "comboBox8";
@@ -134,6 +150,8 @@
             // 
             // comboBox9
             // 
+            this.comboBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox9.FormattingEnabled = true;
             this.comboBox9.Location = new System.Drawing.Point(979, 181);
             this.comboBox9.Name = "comboBox9";
@@ -143,6 +161,8 @@
             // 
             // comboBox10
             // 
+            this.comboBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox10.FormattingEnabled = true;
             this.comboBox10.Location = new System.Drawing.Point(979, 154);
             this.comboBox10.Name = "comboBox10";
@@ -152,6 +172,8 @@
             // 
             // comboBox11
             // 
+            this.comboBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox11.FormattingEnabled = true;
             this.comboBox11.Location = new System.Drawing.Point(979, 127);
             this.comboBox11.Name = "comboBox11";
@@ -161,6 +183,8 @@
             // 
             // comboBox12
             // 
+            this.comboBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox12.FormattingEnabled = true;
             this.comboBox12.Location = new System.Drawing.Point(979, 100);
             this.comboBox12.Name = "comboBox12";
@@ -170,6 +194,8 @@
             // 
             // comboBox13
             // 
+            this.comboBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.comboBox13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox13.FormattingEnabled = true;
             this.comboBox13.Location = new System.Drawing.Point(979, 73);
             this.comboBox13.Name = "comboBox13";
@@ -179,6 +205,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(233)))), ((int)(((byte)(172)))));
             this.textBox1.Location = new System.Drawing.Point(839, 73);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -188,6 +215,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(233)))), ((int)(((byte)(172)))));
             this.textBox2.Location = new System.Drawing.Point(839, 101);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -197,6 +225,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(233)))), ((int)(((byte)(172)))));
             this.textBox3.Location = new System.Drawing.Point(839, 127);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -206,6 +235,7 @@
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(233)))), ((int)(((byte)(172)))));
             this.textBox4.Location = new System.Drawing.Point(839, 155);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
@@ -215,6 +245,7 @@
             // 
             // textBox5
             // 
+            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(233)))), ((int)(((byte)(172)))));
             this.textBox5.Location = new System.Drawing.Point(839, 182);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
@@ -224,6 +255,7 @@
             // 
             // textBox6
             // 
+            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(233)))), ((int)(((byte)(172)))));
             this.textBox6.Location = new System.Drawing.Point(839, 208);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
@@ -233,6 +265,7 @@
             // 
             // textBox7
             // 
+            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(233)))), ((int)(((byte)(172)))));
             this.textBox7.Location = new System.Drawing.Point(905, 47);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
@@ -242,6 +275,7 @@
             // 
             // textBox8
             // 
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(233)))), ((int)(((byte)(172)))));
             this.textBox8.Location = new System.Drawing.Point(979, 47);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
@@ -251,6 +285,7 @@
             // 
             // textBox9
             // 
+            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(233)))), ((int)(((byte)(172)))));
             this.textBox9.Location = new System.Drawing.Point(839, 250);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
@@ -262,7 +297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(1074, 329);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.textBox8);

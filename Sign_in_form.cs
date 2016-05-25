@@ -16,6 +16,7 @@ namespace Buy_Or_Sail
         public Sign_in_form(Form1 form)
         {
             InitializeComponent();
+            this.MaximizeBox = false;
             first = form;
             textBox2.PasswordChar = '*';
             textBox3.PasswordChar = '*';
@@ -66,9 +67,14 @@ namespace Buy_Or_Sail
             }
             List<KeyValuePair<bool, DateTime>> a = new List<KeyValuePair<bool,DateTime>>();
             a.Add(new KeyValuePair<bool,DateTime>(true, DateTime.Now));
-            first.register_user(new Users(first.DB.Last_id, 0, nick, textBox2.Text,
+            first.register_user(new Users(first.DB.Last_id, 1, nick, textBox2.Text,
                 maskedTextBox1.Text, new List<int>(), a));
             this.Close();
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) button1_Click(sender, e);
         }
     }
 }
