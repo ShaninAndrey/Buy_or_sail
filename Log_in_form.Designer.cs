@@ -142,6 +142,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Log_in_form";
             this.Text = "Log_in_form";
             this.panel1.ResumeLayout(false);

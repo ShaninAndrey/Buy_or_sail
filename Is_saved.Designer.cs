@@ -64,6 +64,7 @@
             this.ClientSize = new System.Drawing.Size(284, 113);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Is_saved";
             this.Text = "Is_saved";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

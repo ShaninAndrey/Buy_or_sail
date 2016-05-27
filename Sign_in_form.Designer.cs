@@ -150,6 +150,7 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Sign_in_form";
             this.Text = "Sign_in_form";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

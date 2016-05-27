@@ -152,9 +152,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(173, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(221, 16);
+            this.label3.Size = new System.Drawing.Size(222, 16);
             this.label3.TabIndex = 20;
-            this.label3.Text = "Advertisment is saves automatically";
+            this.label3.Text = "Advertisment is saved automatically";
             this.label3.Visible = false;
             // 
             // advertisment_viev
@@ -175,6 +175,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Text1);
             this.Controls.Add(this.Content1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "advertisment_viev";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -77,11 +77,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(44, 20);
+            this.label2.Location = new System.Drawing.Point(12, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(219, 36);
+            this.label2.Size = new System.Drawing.Size(281, 36);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Are you sure want to\r\ndelete those advertisments?";
+            this.label2.Text = "Those advertisments will be deleted.\r\nAre you sure to delete them?";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Visible = false;
             // 
@@ -89,11 +89,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(66, 20);
+            this.label3.Location = new System.Drawing.Point(55, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(177, 36);
+            this.label3.Size = new System.Drawing.Size(195, 36);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Are you sure want to\r\nadd this advertisment?";
+            this.label3.Text = "Are you sure you want to\r\nadd this advertisment?";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Visible = false;
             // 
@@ -101,11 +101,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(37, 20);
+            this.label4.Location = new System.Drawing.Point(23, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(226, 36);
+            this.label4.Size = new System.Drawing.Size(256, 36);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Are you sure want to remove\r\nthis user from administrator?";
+            this.label4.Text = "Are you sure you want to remove\r\nthis user from moderators?";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label4.Visible = false;
             // 
@@ -113,11 +113,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(44, 20);
+            this.label5.Location = new System.Drawing.Point(39, 20);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(211, 36);
+            this.label5.Size = new System.Drawing.Size(227, 36);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Are you sure want to add\r\nthis user to  administrator?";
+            this.label5.Text = "Are you sure you want to add\r\nthis user to moderators?";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label5.Visible = false;
             // 
@@ -134,6 +134,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Success";
             this.Text = "Add_success";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

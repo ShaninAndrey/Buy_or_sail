@@ -255,6 +255,7 @@
             this.Controls.Add(this.Theme_check);
             this.Controls.Add(this.Sail);
             this.Controls.Add(this.Buy);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "add_advertisment";
             this.Load += new System.EventHandler(this.add_advertisment_Load);
             this.Click += new System.EventHandler(this.add_advertisment_Click);

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Theme_string = new System.Windows.Forms.Label();
             this.Theme_check = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -63,6 +63,7 @@
             this.tag_check2 = new System.Windows.Forms.ComboBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -98,14 +99,14 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(223)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(250)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(223)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(250)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -185,8 +186,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 65);
             this.label1.TabIndex = 22;
-            this.label1.Text = "If you want to add or delete\r\nyour advertisments, you\r\nhave to log in. If your\r\na" +
-    "ccount doesn\'t already\r\nexist, you must create it.";
+            this.label1.Text = "If you want to add or delete\r\nyour advertisments, you\r\nhave to log in. If you\r\ndo" +
+    "n\'t have account yet,\r\nyou must sign up.";
             // 
             // my_advertisment
             // 
@@ -203,7 +204,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 35);
+            this.label2.Location = new System.Drawing.Point(12, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 27;
@@ -223,7 +224,7 @@
             // 
             // tag_edit_but
             // 
-            this.tag_edit_but.Location = new System.Drawing.Point(216, 8);
+            this.tag_edit_but.Location = new System.Drawing.Point(36, 16);
             this.tag_edit_but.Name = "tag_edit_but";
             this.tag_edit_but.Size = new System.Drawing.Size(75, 23);
             this.tag_edit_but.TabIndex = 35;
@@ -236,7 +237,7 @@
             // 
             this.pictureBox5.BackgroundImage = global::Buy_Or_Sail.Properties.Resources.Statistic;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox5.Location = new System.Drawing.Point(152, 8);
+            this.pictureBox5.Location = new System.Drawing.Point(167, 17);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(124, 35);
             this.pictureBox5.TabIndex = 34;
@@ -291,11 +292,11 @@
             // 
             // goto_admin
             // 
-            this.goto_admin.Location = new System.Drawing.Point(239, 8);
+            this.goto_admin.Location = new System.Drawing.Point(23, 16);
             this.goto_admin.Name = "goto_admin";
-            this.goto_admin.Size = new System.Drawing.Size(75, 23);
+            this.goto_admin.Size = new System.Drawing.Size(107, 23);
             this.goto_admin.TabIndex = 36;
-            this.goto_admin.Text = "go to admin";
+            this.goto_admin.Text = "Become moderator";
             this.goto_admin.UseVisualStyleBackColor = true;
             this.goto_admin.Visible = false;
             this.goto_admin.Click += new System.EventHandler(this.button1_Click_1);
@@ -446,12 +447,22 @@
             this.listBox2.Visible = false;
             this.listBox2.Click += new System.EventHandler(this.listBox2_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(137, 13);
+            this.label5.TabIndex = 52;
+            this.label5.Text = "Youre request is in process ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(712, 261);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label4);
@@ -481,6 +492,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Theme_string);
             this.Controls.Add(this.Theme_check);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "Buy or Sell";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -532,6 +544,7 @@
         private System.Windows.Forms.ComboBox tag_check2;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label label5;
     }
 }
 
