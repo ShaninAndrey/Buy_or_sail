@@ -201,8 +201,9 @@ namespace Buy_Or_Sail
                 last = get_day(a.Last().Value);
                 x_min = last - first;
                 Ox = "Days";
-                n = 6;
+                n = 8;
             }
+            else n = 10;
             int l = start, mx = 0;
             for (int i = 1; i < a.Count; i++) { if (a[i].Key) l++; else l--; mx = Math.Max(l, mx); }
             return new KeyValuePair<int, int>(x_min / n + 1, mx / m + 1);

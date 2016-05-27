@@ -143,6 +143,7 @@
             this.label4.Size = new System.Drawing.Size(100, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "add_user_to_admin";
+            this.label4.Visible = false;
             // 
             // comboBox5
             // 
@@ -153,6 +154,7 @@
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(121, 21);
             this.comboBox5.TabIndex = 10;
+            this.comboBox5.Visible = false;
             // 
             // button3
             // 
@@ -162,6 +164,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "submit";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
@@ -172,6 +175,7 @@
             this.button4.TabIndex = 12;
             this.button4.Text = "no";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button6
@@ -182,6 +186,7 @@
             this.button6.TabIndex = 15;
             this.button6.Text = "Remove";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // comboBox6
@@ -193,6 +198,7 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(121, 21);
             this.comboBox6.TabIndex = 14;
+            this.comboBox6.Visible = false;
             // 
             // label5
             // 
@@ -202,13 +208,14 @@
             this.label5.Size = new System.Drawing.Size(133, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Remove_user_from_admin";
+            this.label5.Visible = false;
             // 
             // Edit_tags
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
-            this.ClientSize = new System.Drawing.Size(375, 177);
+            this.ClientSize = new System.Drawing.Size(375, 97);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.comboBox6);
             this.Controls.Add(this.label5);
@@ -226,7 +233,7 @@
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Name = "Edit_tags";
-            this.Text = "Admin window";
+            this.Text = "window";
             this.Click += new System.EventHandler(this.Edit_tags_Click);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,8 +28,20 @@ namespace Buy_Or_Sail
 
             foreach (KeyValuePair<string, Dictionary<string, List<Advertisment>>> a in First.DB.Tags) tag.Add(a.Key, a.Value.Keys.ToList());
             foreach (KeyValuePair<string, Dictionary<string, List<Advertisment>>> a in First.DB.New_tags) new_tag.Add(a.Key, a.Value.Keys.ToList());
-            foreach (Users user in First.DB.Users.Values.ToList()) if (user.State == "admin") user_admin.Add(user.User_name);
+            foreach (Users user in First.DB.Users.Values.ToList()) if (user.State == "admin" && user.User_name != "andrey") user_admin.Add(user.User_name);
             for (int i = 0; i < First.DB.Users_to_admin.Count; i++) user_user.Add(First.DB.Users_to_admin[i].User_name);
+            if (first.Nick == "andrey")
+            {
+                this.Text = "Admin window";
+                this.Height += 85;
+                comboBox6.Visible = true;
+                comboBox5.Visible = true;
+                button6.Visible = true;
+                button4.Visible = true;
+                button3.Visible = true;
+                label5.Visible = true;
+                label4.Visible = true;
+            }
             update_comboxes(true, 3);
         }
 
@@ -43,6 +55,7 @@ namespace Buy_Or_Sail
         {
             first.DB.Users[comboBox5.Text.ToString()].user_to_admin();
             first.DB.Users_to_admin.Remove(first.DB.Users[comboBox5.Text.ToString()]);
+            user_admin.Add(comboBox5.Text.ToString());
             user_user.Remove(comboBox5.Text.ToString());
             update_comboxes(false, 2);
         }
@@ -71,14 +84,15 @@ namespace Buy_Or_Sail
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBox2.Items.Clear();
-            foreach (string a in new_tag[comboBox1.Text]) comboBox2.Items.Add(a);
+            comboBox2.Text = "";
+            foreach (string a in tag[comboBox1.Text.ToString()]) comboBox2.Items.Add(a);
             comboBox2.Visible = true;
         }
-
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBox4.Items.Clear();
-            foreach (string a in new_tag[comboBox3.Text]) comboBox4.Items.Add(a);
+            comboBox4.Text = "";
+            foreach (string a in new_tag[comboBox3.Text.ToString()]) comboBox4.Items.Add(a);
             comboBox4.Visible = true;
         }
 
@@ -97,7 +111,6 @@ namespace Buy_Or_Sail
             if(new_tag[comboBox3.Text].Count == 0) new_tag.Remove(comboBox3.Text);
             update_comboxes(true, 0);
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (!new_tag.ContainsKey(comboBox3.Text)) return;
@@ -108,26 +121,22 @@ namespace Buy_Or_Sail
             if (new_tag[comboBox3.Text].Count == 0) new_tag.Remove(comboBox3.Text);
             update_comboxes(true, 0);
         }
-
         private void Edit_tags_Click(object sender, EventArgs e)
         {
             
         }
-
         private void button6_Click(object sender, EventArgs e)
         {
             if (!user_admin.Contains(comboBox6.Text)) return;
             Success form = new Success(this, 0);
             form.Show();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             if (!user_user.Contains(comboBox5.Text)) return;
             Success form = new Success(this, 1);
             form.Show();
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             if (!user_user.Contains(comboBox5.Text)) return;

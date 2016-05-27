@@ -13,6 +13,8 @@ namespace Buy_Or_Sail
     {
         string nick;
         Table db;
+        Dictionary<string, List<string>> tags;
+        Dictionary<string, List<string>> db_tags;
 
         public string Nick { get { return nick; } }
         public Table DB { get { return db; } }
@@ -49,12 +51,32 @@ namespace Buy_Or_Sail
                     dataGridView1.Rows.Add(a.Id, DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content);
                 }
             }
+            tags = new Dictionary<string, List<string>>();
+            db_tags = new Dictionary<string, List<string>>();
+            tag_check.LostFocus += Tag_check_ChangeFocused;
+            tag_box.LostFocus += Tag_box_ChangeFocused;
+            listBox2.MouseMove += listBox2_MouseMove;
+            listBox3.MouseMove += listBox3_MouseMove;
+            listBox1.MouseLeave += listBox1_MouseLeave;
+            listBox2.MouseLeave += listBox2_MouseLeave;
+            listBox3.MouseLeave += listBox3_MouseLeave;
+            foreach (KeyValuePair<string, Dictionary<string, List<Advertisment>>> x in db.Tags)
+            {
+                db_tags.Add(x.Key, new List<string>(x.Value.Keys));
+            }
+            if (db_tags.Count > 0) foreach (string a in db_tags.Keys) tag_check.Items.Add(a);
         }
 
         public void add_user(string Nick)
         {
             nick = Nick;
-            if (db.Users[nick].State == "admin") tag_edit_but.Visible = true; else goto_admin.Visible = true;
+            if (db.Users[nick].State == "admin")
+            {
+                if (nick != "andrey") tag_edit_but.Text = "widow";
+                tag_edit_but.Visible = true;
+            }
+            else
+                if (!db.Users_to_admin.Contains(db.Users[nick])) goto_admin.Visible = true;
             my_advertisment.Location = new Point(my_advertisment.Location.X, my_advertisment.Location.Y + 100);
             Buy.Location = new Point(Buy.Location.X, Buy.Location.Y + 100);
             Sell.Location = new Point(Sell.Location.X, Sell.Location.Y + 100);
@@ -84,7 +106,7 @@ namespace Buy_Or_Sail
         public void update_table()
         {
             dataGridView1.Rows.Clear();
-            if (tegs_box.Text.Length < 1)
+            //if (tegs_box.Text.Length < 1)
             {
                 if (Theme_check.Text != "All Themes" && Theme_check.Text.Length > 0)
                 {
@@ -113,7 +135,7 @@ namespace Buy_Or_Sail
                                 dataGridView1.Rows.Add(a.Id, DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content);
                             }
                         }
-            }
+            }/*
             else
             {
                 List<string> tegs = get_tegs();
@@ -152,7 +174,7 @@ namespace Buy_Or_Sail
                                     }
                             }
                         }
-            }
+            }*/
         }
 
         private void Advertisment_Add_Click(object sender, EventArgs e)
@@ -206,30 +228,7 @@ namespace Buy_Or_Sail
                 form.Show();
             }
         }
-        private List<string> get_tegs()
-        {
-            List<string> teg = new List<string>();
-            int l = 0;
-            for (int i = 1; i < tegs_box.Text.Length; i++) if (tegs_box.Text[i] == ' ' && tegs_box.Text[i - 1] != ' ')
-                {
-                    teg.Add(tegs_box.Text.Substring(l, i - l));
-                    l = i + 1;
-                }
-                else if (tegs_box.Text[i] == ' ') l = i + 1;
-            if(l!=tegs_box.Text.Length) teg.Add(tegs_box.Text.Substring(l));
-            return teg;
-        }
-        /*private bool align_tegs(string teg, Advertisment adv)
-        {
-            if (adv.Tegs.Count == 0) return true;
-            for (int i = 0; i < adv.Tegs.Count; i++)
-            {
-                for (int q = 0; q < Math.Min(teg.Length, adv.Tegs[i].Length); q++)
-                    if (Program.big_small(teg[q]) != Program.big_small(adv.Tegs[i][q])) return false;
-                return true;
-            }
-            return false;
-        }*/
+        
         private void tegs_box_TextChanged(object sender, EventArgs e)
         {
             update_table();
@@ -281,7 +280,7 @@ namespace Buy_Or_Sail
             }
             else listBox1.Visible = false;
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void pictireBox5_Click(object sender, EventArgs e)
         {
             Statistic form = new Statistic(db);
             form.Show();
@@ -305,10 +304,287 @@ namespace Buy_Or_Sail
             Edit_tags form = new Edit_tags(this);
             form.Show();
         }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             db.Users_to_admin.Add(db.Users[nick]);
+            goto_admin.Visible = false;
+        }
+
+        //---------------------------------Add_tag------------------------------------
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (tag_check.Text.Length < 1 || tag_box.Text.Length < 1) return;
+            if (!tags.ContainsKey(tag_check.Text)) tags.Add(tag_check.Text, new List<string>());
+            if (!tags[tag_check.Text].Contains(tag_box.Text))
+            {
+                tags[tag_check.Text].Add(tag_box.Text);
+                if (Tegs.Text == "Tags") Tegs.Text = "";
+                Tegs.Text = Tegs.Text + tag_box.Text + "; ";
+                db_tags[tag_check.Text.ToString()].Remove(tag_box.Text.ToString());
+                update_tag_box();
+                if (db_tags[tag_check.Text.ToString()].Count < 1)
+                {
+                    db_tags.Remove(tag_check.Text.ToString());
+                    update_tag_check();
+                    listBox2.Visible = false;
+                }
+                if (tag_check2.Text == tag_check.Text && tag_check2.Text != "") update_tag_box2(); else update_tag_check2();
+            }
+        }
+
+        private void update_tag_check()
+        {
+            tag_box.Visible = false;
+            if (tag_check.Items.Count < 1 || !db_tags.ContainsKey(tag_check.Text)) tag_check.Text = "";
+            tag_check.Items.Clear();
+            foreach (string a in db_tags.Keys) tag_check.Items.Add(a);
+        }
+        private void update_tag_box()
+        {
+            tag_box.Items.Clear();
+            tag_box.Text = "";
+            listBox3.Visible = false;
+            foreach (string a in db_tags[tag_check.Text.ToString()]) tag_box.Items.Add(a);
+            tag_box.Visible = true;
+        }
+        private void update_tag_check2()
+        {
+            tag_box2.Visible = false;
+            if (tag_check2.Items.Count < 1 || !tags.ContainsKey(tag_check2.Text)) tag_check2.Text = "";
+            tag_check2.Items.Clear();
+            foreach (string a in tags.Keys) tag_check2.Items.Add(a);
+        }
+        private void update_tag_box2()
+        {
+            tag_box2.Text = "";
+            tag_box2.Items.Clear();
+            listBox4.Visible = false;
+            foreach (string a in tags[tag_check2.Text.ToString()]) tag_box2.Items.Add(a);
+            tag_box2.Visible = true;
+        }
+
+        private void Tag_check_TextChanged(object sender, EventArgs e)
+        {
+            List<string> a = new List<string>();
+            foreach (string key in db_tags.Keys)
+            {
+                int k = 0;
+                for (int i = 0; i < Math.Min(key.Length, tag_check.Text.Length); i++)
+                    if (Program.big_small(key[i]) != Program.big_small(tag_check.Text[i])) k++;
+                if (k < 2) a.Add(key);
+            }
+            listBox2.Items.Clear();
+            for (int i = 0; i < Math.Min(a.Count, 5); i++) listBox2.Items.Add(a[i]);
+            if (a.Count > 0)
+            {
+                listBox2.Size = new System.Drawing.Size(listBox2.Size.Width, 4 + 13 * Math.Min(5, a.Count));
+                listBox2.Visible = true;
+            }
+            else listBox2.Visible = false;
+            if (db_tags.ContainsKey(tag_check.Text.ToString()))
+            {
+                listBox2.Visible = false;
+                update_tag_box();
+            }
+            tag_box.Visible = true;
+        }
+        private void Tag_check_ChangeFocused(object sender, EventArgs e)
+        {
+            if (!listBox2.Focused) listBox2.Visible = false;
+        }
+        private void Tag_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox2.Visible = false;
+            update_tag_box();
+        }
+        private void Tag_check_Click(object sender, EventArgs e)
+        {
+            listBox2.Visible = false;
+        }
+        private void listBox2_Click(object sender, EventArgs e)
+        {
+            tag_check.Text = listBox2.Items[listBox2.SelectedIndex].ToString();
+            listBox2.Visible = false;
+            update_tag_box();
+        }
+        private void listBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = listBox2.Location.Y, y = this.Location.Y, z = MousePosition.Y;
+            int a = z - y - x - 32;
+            listBox2.SelectedIndex = a / 13;
+        }
+        private void listBox2_MouseLeave(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listBox2.Items.Count; i++) listBox2.SelectedIndex = -1;
+        }
+
+        private void Tag_box_TextChanged(object sender, EventArgs e)
+        {
+            if (!db_tags.ContainsKey(tag_check.Text)) return;
+            List<string> a = new List<string>();
+            foreach (string key in db_tags[tag_check.Text])
+            {
+                int k = 0;
+                for (int i = 0; i < Math.Min(key.Length, tag_box.Text.Length); i++)
+                    if (Program.big_small(key[i]) != Program.big_small(tag_box.Text[i])) k++;
+                if (k < 2) a.Add(key);
+            }
+            listBox3.Items.Clear();
+            for (int i = 0; i < Math.Min(a.Count, 5); i++) listBox3.Items.Add(a[i]);
+            if (a.Count > 0)
+            {
+                listBox3.Size = new System.Drawing.Size(listBox3.Size.Width, 4 + 13 * Math.Min(5, a.Count));
+                listBox3.Visible = true;
+            }
+            else listBox3.Visible = false;
+        }
+        private void Tag_box_ChangeFocused(object sender, EventArgs e)
+        {
+            if (!listBox3.Focused) listBox3.Visible = false;
+        }
+        private void Tag_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox3.Visible = false;
+        }
+        private void Tag_box_Click(object sender, EventArgs e)
+        {
+            listBox3.Visible = false;
+        }
+        private void listBox3_Click(object sender, EventArgs e)
+        {
+            tag_box.Text = listBox3.Items[listBox3.SelectedIndex].ToString();
+            listBox3.Visible = false;
+        }
+        private void listBox3_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = listBox3.Location.Y, y = this.Location.Y, z = MousePosition.Y;
+            int a = z - y - x - 32;
+            listBox3.SelectedIndex = a / 13;
+        }
+        private void listBox3_MouseLeave(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listBox3.Items.Count; i++) listBox3.SelectedIndex = -1;
+        }
+
+        //-----------------------------------------------delete_tag---------------------------------------
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!tags.ContainsKey(tag_check2.Text.ToString()) || !tags[tag_check2.Text.ToString()].Contains(tag_box2.Text.ToString())) return;
+            tags[tag_check2.Text.ToString()].Remove(tag_box2.Text);
+            int k = Tegs.Text.IndexOf(tag_box2.Text);
+            Tegs.Text = Tegs.Text.Substring(0, k) + Tegs.Text.Substring(k + tag_box2.Text.Length + 2);
+
+            if (!db_tags.ContainsKey(tag_check2.Text)) db_tags.Add(tag_check2.Text, new List<string>());
+            db_tags[tag_check2.Text].Add(tag_box2.Text);
+            if (tag_check2.Text == tag_check.Text && tag_check2.Text != "") update_tag_box(); else update_tag_check();
+
+            update_tag_box2();
+            if (tags[tag_check2.Text].Count < 1) { tags.Remove(tag_check2.Text); update_tag_check2(); }
+            listBox5.Visible = false;
+        }
+
+
+        private void Tag_check2_TextChanged(object sender, EventArgs e)
+        {
+            List<string> a = new List<string>();
+            foreach (string key in tags.Keys)
+            {
+                int k = 0;
+                for (int i = 0; i < Math.Min(key.Length, tag_check2.Text.Length); i++)
+                    if (Program.big_small(key[i]) != Program.big_small(tag_check2.Text[i])) k++;
+                if (k < 2) a.Add(key);
+            }
+            listBox5.Items.Clear();
+            for (int i = 0; i < Math.Min(a.Count, 5); i++) listBox5.Items.Add(a[i]);
+            if (a.Count > 0)
+            {
+                listBox5.Size = new System.Drawing.Size(listBox5.Size.Width, 4 + 13 * Math.Min(5, a.Count));
+                listBox5.Visible = true;
+            }
+            else listBox5.Visible = false;
+            if (tags.ContainsKey(tag_check2.Text))
+            {
+                listBox5.Visible = false;
+                update_tag_box2();
+            }
+            tag_box2.Visible = true;
+        }
+        private void Tag_check2_ChangeFocused(object sender, EventArgs e)
+        {
+            if (!listBox5.Focused) listBox5.Visible = false;
+        }
+        private void Tag_check2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox5.Visible = false;
+            update_tag_box2();
+        }
+        private void Tag_check2_Click(object sender, EventArgs e)
+        {
+            listBox5.Visible = false;
+        }
+        private void listBox5_Click(object sender, EventArgs e)
+        {
+            tag_check2.Text = listBox5.Items[listBox5.SelectedIndex].ToString();
+            listBox5.Visible = false;
+            update_tag_box2();
+        }
+        private void listBox5_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = listBox5.Location.Y, y = this.Location.Y, z = MousePosition.Y;
+            int a = z - y - x - 32;
+            listBox5.SelectedIndex = a / 13;
+        }
+        private void listBox5_MouseLeave(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listBox5.Items.Count; i++) listBox5.SelectedIndex = -1;
+        }
+
+        private void Tag_box2_TextChanged(object sender, EventArgs e)
+        {
+            if (!tags.ContainsKey(tag_check2.Text)) return;
+            List<string> a = new List<string>();
+            foreach (string key in tags[tag_check2.Text])
+            {
+                int k = 0;
+                for (int i = 0; i < Math.Min(key.Length, tag_box2.Text.Length); i++)
+                    if (Program.big_small(key[i]) != Program.big_small(tag_box2.Text[i])) k++;
+                if (k < 2) a.Add(key);
+            }
+            listBox4.Items.Clear();
+            for (int i = 0; i < Math.Min(a.Count, 5); i++) listBox4.Items.Add(a[i]);
+            if (a.Count > 0)
+            {
+                listBox4.Size = new System.Drawing.Size(listBox4.Size.Width, 4 + 13 * Math.Min(5, a.Count));
+                listBox4.Visible = true;
+            }
+            else listBox4.Visible = false;
+        }
+        private void Tag_box2_ChangeFocused(object sender, EventArgs e)
+        {
+            if (!listBox4.Focused) listBox4.Visible = false;
+        }
+        private void Tag_box2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox4.Visible = false;
+        }
+        private void Tag_box2_Click(object sender, EventArgs e)
+        {
+            listBox4.Visible = false;
+        }
+        private void listBox4_Click(object sender, EventArgs e)
+        {
+            tag_box2.Text = listBox4.Items[listBox4.SelectedIndex].ToString();
+            listBox4.Visible = false;
+        }
+        private void listBox4_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = listBox4.Location.Y, y = this.Location.Y, z = MousePosition.Y;
+            int a = z - y - x - 32;
+            listBox4.SelectedIndex = a / 13;
+        }
+        private void listBox4_MouseLeave(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listBox4.Items.Count; i++) listBox4.SelectedIndex = -1;
         }
     }
 }

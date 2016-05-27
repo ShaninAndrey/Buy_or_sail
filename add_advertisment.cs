@@ -34,7 +34,7 @@ namespace Buy_Or_Sail
             {
                 db_tags.Add(x.Key, new List<string>(x.Value.Keys));
             }
-            if(db_tags.Count > 0) tag_check.DataSource = new List<string>(db_tags.Keys);
+            if (db_tags.Count > 0) foreach (string a in db_tags.Keys) tag_check.Items.Add(a);
         }
 
         private void click_text(TextBox a)
@@ -131,9 +131,24 @@ namespace Buy_Or_Sail
                 tags[tag_check.Text].Add(tag_box.Text);
                 if (Tegs.Text == "Tags") Tegs.Text = "";
                 Tegs.Text = Tegs.Text + tag_box.Text + "; ";
+                db_tags[tag_check.Text.ToString()].Remove(tag_box.Text.ToString());
+                update_tag_box();
+                if (db_tags[tag_check.Text.ToString()].Count < 1) { db_tags.Remove(tag_check.Text.ToString()); update_tag_check(); }
             }
         }
 
+        private void update_tag_check()
+        {
+            tag_box.Visible = false;
+            tag_check.Items.Clear();
+            foreach (string a in db_tags.Keys) tag_check.Items.Add(a);
+        }
+        private void update_tag_box()
+        {
+            tag_box.Items.Clear();
+            foreach (string a in db_tags[tag_check.Text.ToString()]) tag_box.Items.Add(a);
+            tag_box.Visible = true;
+        }
 
         private void Theme_check_TextChanged(object sender, EventArgs e)
         {
