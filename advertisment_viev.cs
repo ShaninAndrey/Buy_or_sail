@@ -40,6 +40,7 @@ namespace Buy_Or_Sail
             {
                 Text1.ReadOnly = false;
                 Content1.ReadOnly = false;
+                label3.Visible = true;
             }
             this.FormClosing += advertisment_view_FormClosing;
         }
@@ -84,6 +85,11 @@ namespace Buy_Or_Sail
             save_advertisment();
             Is_saved form = new Is_saved();
             form.Show();
+        }
+
+        private void Content1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

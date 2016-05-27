@@ -26,6 +26,7 @@ namespace Buy_Or_Sail
             db = DB;
             List<string> keys = DB.Keys;
             this.Resize += Form1_Resize;
+            listBox1.MouseLeave += listBox1_MouseLeave;
             Theme_check.LostFocus += Theme_check_ChangeFocused;
             dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(250, 243, 217);
@@ -53,12 +54,9 @@ namespace Buy_Or_Sail
         public void add_user(string Nick)
         {
             nick = Nick;
-            my_advertisment.Location = new Point(my_advertisment.Location.X, my_advertisment.Location.Y + 64);
-            Buy.Location = new Point(Buy.Location.X, Buy.Location.Y + 64);
-            Sell.Location = new Point(Sell.Location.X, Sell.Location.Y + 64);
-            Theme_check.Location = new Point(Theme_check.Location.X, Theme_check.Location.Y + 64);
-            Theme_string.Location = new Point(Theme_string.Location.X, Theme_string.Location.Y + 64);
-            listBox1.Location = new Point(listBox1.Location.X, listBox1.Location.Y + 64);
+            my_advertisment.Location = new Point(my_advertisment.Location.X, my_advertisment.Location.Y + 100);
+            Buy.Location = new Point(Buy.Location.X, Buy.Location.Y + 100);
+            Sell.Location = new Point(Sell.Location.X, Sell.Location.Y + 100);
             for (int i = 0; i < db.Users[Nick].Id_adv.Count; i++) db.Advertisment[db.Users[Nick].Id_adv[i]].Rating = true;
             label2.Text = "Hello, " + Nick;
             label2.Visible = true;
@@ -129,7 +127,7 @@ namespace Buy_Or_Sail
                             if (my_advertisment.Checked && db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]].User_name == nick || !(my_advertisment.Checked))
                             {
                                 Advertisment a = db.DB[Theme_check.Text][db.Keys_id[Theme_check.Text][i]];
-                                for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
+                                //for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
                                     {
                                         dataGridView1.Rows.Add(a.Id, DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content);
                                         break;
@@ -146,7 +144,7 @@ namespace Buy_Or_Sail
                             if (my_advertisment.Checked && db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]].User_name == nick || !(my_advertisment.Checked))
                             {
                                 Advertisment a = db.DB[db.Keys[q]][db.Keys_id[db.Keys[q]][i]];
-                                for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
+                                //for (int w = 0; w < tegs.Count; w++) if (align_tegs(tegs[w], a))
                                     {
                                         dataGridView1.Rows.Add(a.Id, DB.Users[a.User_name].Rating, a.Theme, a.BuyOrSail, a.Content, a);
                                         break;
@@ -220,7 +218,7 @@ namespace Buy_Or_Sail
             if(l!=tegs_box.Text.Length) teg.Add(tegs_box.Text.Substring(l));
             return teg;
         }
-        private bool align_tegs(string teg, Advertisment adv)
+        /*private bool align_tegs(string teg, Advertisment adv)
         {
             if (adv.Tegs.Count == 0) return true;
             for (int i = 0; i < adv.Tegs.Count; i++)
@@ -230,7 +228,7 @@ namespace Buy_Or_Sail
                 return true;
             }
             return false;
-        }
+        }*/
         private void tegs_box_TextChanged(object sender, EventArgs e)
         {
             update_table();
@@ -253,6 +251,10 @@ namespace Buy_Or_Sail
             int x = listBox1.Location.Y, y = this.Location.Y, z = MousePosition.Y;
             int a = z - y - x - 32;
             listBox1.SelectedIndex = a / 13;
+        }
+        private void listBox1_MouseLeave(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listBox1.Items.Count; i++) listBox1.SelectedIndex = -1;
         }
         private void Theme_check_ChangeFocused(object sender, EventArgs e)
         {
@@ -295,6 +297,12 @@ namespace Buy_Or_Sail
         }
         private void dataGridView1_Resize(int width, int height)
         {
+        }
+
+        private void tag_edit_but_Click(object sender, EventArgs e)
+        {
+            Edit_tags form = new Edit_tags(this);
+            form.Show();
         }
     }
 }

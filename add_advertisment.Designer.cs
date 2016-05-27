@@ -38,6 +38,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tag_check = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.tag_box = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +98,7 @@
             // Content
             // 
             this.Content.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
-            this.Content.Location = new System.Drawing.Point(176, 12);
+            this.Content.Location = new System.Drawing.Point(176, 53);
             this.Content.Name = "Content";
             this.Content.Size = new System.Drawing.Size(386, 20);
             this.Content.TabIndex = 7;
@@ -102,10 +108,10 @@
             // Text
             // 
             this.Text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
-            this.Text.Location = new System.Drawing.Point(176, 38);
+            this.Text.Location = new System.Drawing.Point(176, 79);
             this.Text.Multiline = true;
             this.Text.Name = "Text";
-            this.Text.Size = new System.Drawing.Size(386, 231);
+            this.Text.Size = new System.Drawing.Size(386, 200);
             this.Text.TabIndex = 8;
             this.Text.Text = "Text";
             this.Text.Click += new System.EventHandler(this.Text_Click);
@@ -116,9 +122,10 @@
             this.Tegs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
             this.Tegs.Location = new System.Drawing.Point(176, 285);
             this.Tegs.Name = "Tegs";
+            this.Tegs.ReadOnly = true;
             this.Tegs.Size = new System.Drawing.Size(386, 20);
             this.Tegs.TabIndex = 9;
-            this.Tegs.Text = "Tegs";
+            this.Tegs.Text = "Tags";
             this.Tegs.Click += new System.EventHandler(this.Tegs_Click);
             // 
             // label2
@@ -158,12 +165,86 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.Advertisment_Add_Click);
             // 
+            // tag_check
+            // 
+            this.tag_check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.tag_check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tag_check.FormattingEnabled = true;
+            this.tag_check.Location = new System.Drawing.Point(267, 16);
+            this.tag_check.Name = "tag_check";
+            this.tag_check.Size = new System.Drawing.Size(104, 21);
+            this.tag_check.TabIndex = 17;
+            this.tag_check.SelectedIndexChanged += new System.EventHandler(this.Tag_check_SelectedIndexChanged);
+            this.tag_check.TextChanged += new System.EventHandler(this.Tag_check_TextChanged);
+            this.tag_check.Click += new System.EventHandler(this.Tag_check_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(487, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Add tag";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // listBox2
+            // 
+            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(267, 37);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(104, 17);
+            this.listBox2.TabIndex = 20;
+            this.listBox2.Visible = false;
+            this.listBox2.Click += new System.EventHandler(this.listBox2_Click);
+            // 
+            // listBox3
+            // 
+            this.listBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(377, 36);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(104, 17);
+            this.listBox3.TabIndex = 23;
+            this.listBox3.Visible = false;
+            this.listBox3.Click += new System.EventHandler(this.listBox3_Click);
+            // 
+            // tag_box
+            // 
+            this.tag_box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.tag_box.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tag_box.FormattingEnabled = true;
+            this.tag_box.Location = new System.Drawing.Point(377, 16);
+            this.tag_box.Name = "tag_box";
+            this.tag_box.Size = new System.Drawing.Size(104, 21);
+            this.tag_box.TabIndex = 22;
+            this.tag_box.Visible = false;
+            this.tag_box.SelectedIndexChanged += new System.EventHandler(this.Tag_box_SelectedIndexChanged);
+            this.tag_box.TextChanged += new System.EventHandler(this.Tag_box_TextChanged);
+            this.tag_box.Click += new System.EventHandler(this.Tag_box_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(182, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Select tags";
+            // 
             // add_advertisment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(574, 317);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tag_box);
+            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tag_check);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
@@ -195,5 +276,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox tag_check;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ComboBox tag_box;
+        private System.Windows.Forms.Label label1;
     }
 }

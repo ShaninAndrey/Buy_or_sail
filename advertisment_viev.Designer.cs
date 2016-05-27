@@ -39,17 +39,18 @@
             this.DateTime = new System.Windows.Forms.Label();
             this.dateval = new System.Windows.Forms.Label();
             this.Content1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Text1
             // 
             this.Text1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
-            this.Text1.Location = new System.Drawing.Point(12, 44);
+            this.Text1.Location = new System.Drawing.Point(12, 58);
             this.Text1.Multiline = true;
             this.Text1.Name = "Text1";
             this.Text1.ReadOnly = true;
-            this.Text1.Size = new System.Drawing.Size(550, 185);
+            this.Text1.Size = new System.Drawing.Size(550, 171);
             this.Text1.TabIndex = 8;
             // 
             // label1
@@ -138,11 +139,23 @@
             // Content1
             // 
             this.Content1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
-            this.Content1.Location = new System.Drawing.Point(12, 12);
+            this.Content1.Location = new System.Drawing.Point(12, 32);
             this.Content1.Name = "Content1";
             this.Content1.ReadOnly = true;
             this.Content1.Size = new System.Drawing.Size(550, 20);
             this.Content1.TabIndex = 7;
+            this.Content1.TextChanged += new System.EventHandler(this.Content1_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(173, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(221, 16);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Advertisment is saves automatically";
+            this.label3.Visible = false;
             // 
             // advertisment_viev
             // 
@@ -150,6 +163,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(200)))));
             this.ClientSize = new System.Drawing.Size(574, 302);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dateval);
             this.Controls.Add(this.DateTime);
             this.Controls.Add(this.pictureBox1);
@@ -181,5 +195,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label DateTime;
         private System.Windows.Forms.Label dateval;
+        private System.Windows.Forms.Label label3;
     }
 }

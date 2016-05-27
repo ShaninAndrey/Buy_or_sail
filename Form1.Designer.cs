@@ -44,6 +44,7 @@
             this.my_advertisment = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.tag_edit_but = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -217,6 +218,16 @@
             this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             this.listBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseMove);
             // 
+            // tag_edit_but
+            // 
+            this.tag_edit_but.Location = new System.Drawing.Point(325, 21);
+            this.tag_edit_but.Name = "tag_edit_but";
+            this.tag_edit_but.Size = new System.Drawing.Size(75, 23);
+            this.tag_edit_but.TabIndex = 35;
+            this.tag_edit_but.Text = "Edit tags";
+            this.tag_edit_but.UseVisualStyleBackColor = true;
+            this.tag_edit_but.Click += new System.EventHandler(this.tag_edit_but_Click);
+            // 
             // pictureBox5
             // 
             this.pictureBox5.BackgroundImage = global::Buy_Or_Sail.Properties.Resources.Statistic;
@@ -280,6 +291,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(712, 262);
+            this.Controls.Add(this.tag_edit_but);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -332,6 +344,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Content;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Button tag_edit_but;
     }
 }
 

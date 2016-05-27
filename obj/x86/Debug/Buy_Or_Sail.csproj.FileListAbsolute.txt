@@ -13,3 +13,4 @@ D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.csprojReso
 D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Statistic.resources
 D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Success.resources
 D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Is_saved.resources
+D:\Andrey\HNURE\OOP\Buy_Or_Sail\Buy_Or_Sail\obj\x86\Debug\Buy_Or_Sail.Edit_tags.resources
