@@ -14,6 +14,7 @@ namespace Buy_Or_Sail
         add_advertisment first;
         Form1 second;
         advertisment_viev third;
+        Edit_tags fourth;
         int k;
 
         public Success(add_advertisment First)
@@ -43,6 +44,15 @@ namespace Buy_Or_Sail
             this.MaximizeBox = false;
             label1.Visible = true;
         }
+        public Success(Edit_tags First, int l)
+        {
+            fourth = First;
+            k = 4+l;
+            this.MaximizeBox = false;
+            InitializeComponent();
+            if (l == 0) this.Text = "Remove user"; else this.Text = "Add user to admin";
+            if (l == 0) label4.Visible = true; else label5.Visible = true;
+        }
 
         private void No_Click(object sender, EventArgs e)
         {
@@ -55,7 +65,9 @@ namespace Buy_Or_Sail
             else
                 if (k == 2) second.delete_adv();
                 else
-                    third.save_advertisment();
+                    if (k == 3) third.save_advertisment();
+                    else
+                        if (k == 4) fourth.remove_user_from_admin(); else fourth.add_user_to_admin();
             this.Close();
         }
     }

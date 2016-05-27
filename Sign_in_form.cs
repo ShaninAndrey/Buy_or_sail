@@ -67,7 +67,7 @@ namespace Buy_Or_Sail
             }
             List<KeyValuePair<bool, DateTime>> a = new List<KeyValuePair<bool,DateTime>>();
             a.Add(new KeyValuePair<bool,DateTime>(true, DateTime.Now));
-            first.register_user(new Users(first.DB.Last_id, 1, nick, textBox2.Text,
+            first.register_user(new Users(first.DB.Last_id, 1, nick, "user", textBox2.Text,
                 maskedTextBox1.Text, new List<int>(), a));
             this.Close();
         }

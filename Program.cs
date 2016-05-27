@@ -11,12 +11,14 @@ namespace Buy_Or_Sail
         int last_id;
         List<string> keys;
         Dictionary<string, Users> users;
+        List<Users> users_to_admin;
         Dictionary<string, List<int>> keys_id;
         Dictionary<int, Advertisment> advertisment;
         Dictionary<string, Dictionary<int, Advertisment>> db;
         Dictionary<string, Dictionary<string, List<Advertisment>>> tag;
         Dictionary<string, Dictionary<string, List<Advertisment>>> new_tag;
 
+        public List<Users> Users_to_admin { get { return users_to_admin; } }
         public Dictionary<string, Dictionary<string, List<Advertisment>>> Tags { get { return tag; } }
         public Dictionary<string, Dictionary<string, List<Advertisment>>> New_tags { get { return new_tag; } }
         public Dictionary<int, Advertisment> Advertisment { get { return advertisment; } }
@@ -40,6 +42,7 @@ namespace Buy_Or_Sail
             keys_id = new Dictionary<string, List<int>>();
             users = new Dictionary<string, Users>();
             keys = new List<string>();
+            users_to_admin = new List<Buy_Or_Sail.Users>();
             advertisment = new Dictionary<int, Advertisment>();
             tag = new Dictionary<string, Dictionary<string, List<Buy_Or_Sail.Advertisment>>>();
             new_tag = new Dictionary<string, Dictionary<string, List<Buy_Or_Sail.Advertisment>>>();
@@ -52,6 +55,10 @@ namespace Buy_Or_Sail
                 users.Add(user.User_name, user);
                 last_id = Math.Max(last_id, user.Id);
             }
+
+            //------------------------------------Read_users_to_admin----------------------------
+            n = file.read_int();
+            for (int i = 0; i < n; i++) users_to_admin.Add(users[file.read_str()]);
 
             //------------------------------------Read_advertisments--------------------------------
             n = file.read_int();
@@ -108,6 +115,14 @@ namespace Buy_Or_Sail
         {
             users.Add(User.User_name, User);
         }
+        public void add_user_to_admin(Users User)
+        {
+            users[User.User_name].user_to_admin();
+        }
+        public void add_user_form_admin(Users User)
+        {
+            users[User.User_name].user_form_admin();
+        }
         public void add_advertisment(Advertisment a, Dictionary<string, List<string>> tags)
         {
             string theme = a.Theme;
@@ -139,16 +154,15 @@ namespace Buy_Or_Sail
             File_work file = new File_work(new StreamWriter("DB.txt"), new FileInfo("DB.txt"));
             List<Users> User = new List<Users>(users.Values);
             Dictionary<string, List<Advertisment>> dict = new Dictionary<string, List<Advertisment>>();
-            for (int i = 0; i < keys.Count; i++) dict.Add(keys[i], new List<Advertisment>(db[keys[i]].Values));
-            List<List<Advertisment>> adv = new List<List<Advertisment>>(dict.Values);
+            List<Advertisment> adv = new List<Advertisment>(advertisment.Values);
 
 
             file.write_int(User.Count);
             for (int i = 0; i < User.Count; i++) file.write_user(User[i]);
-            int n=0;
-            for (int i = 0; i < adv.Count; i++) n += adv[i].Count;
-            file.write_int(n);
-            for (int i = 0; i < adv.Count; i++) for (int q = 0; q < adv[i].Count; q++) file.write_advertisment(adv[i][q]);
+            file.write_int(users_to_admin.Count);
+            for (int i = 0; i < users_to_admin.Count; i++) file.write_str(users_to_admin[i].User_name);
+            file.write_int(adv.Count);
+            for (int i = 0; i < adv.Count; i++) file.write_advertisment(adv[i]);
 
 
             file.write_int(tag.Count);
@@ -211,11 +225,12 @@ namespace Buy_Or_Sail
     public class Users
     {
         int id, rating;
-        string user_name, password, telephone;
+        string user_name, password, telephone, state;
         List<int> id_adv;
         Dictionary<int, Advertisment> advertisment;
         List<KeyValuePair<bool, DateTime>> history;
 
+        public string State { get { return state; } }
         public List<KeyValuePair<bool, DateTime>> History { get { return history; } }
         public Dictionary<int, Advertisment> Advertisment { get { return advertisment; } }
         public List<int> Id_adv { get { return id_adv; } }
@@ -225,10 +240,11 @@ namespace Buy_Or_Sail
         public string User_name { get { return user_name; } }
         public string Password { get { return password; } }
 
-        public Users(int Id, int Rating, string User_name, string Password, 
+        public Users(int Id, int Rating, string User_name, string State, string Password, 
                     string Telephone, List<int> Id_adv, List<KeyValuePair<bool, DateTime>> History)
         {
             advertisment = new Dictionary<int, Advertisment>();
+            state = State;
             history = History;
             rating = Rating;
             id = Id;
@@ -238,6 +254,8 @@ namespace Buy_Or_Sail
             id_adv = Id_adv;
         }
 
+        public void user_to_admin() { state = "admin"; }
+        public void user_form_admin() { state = "user"; }
         public void rating_inc() { rating++; }
         public void rating_dec() { rating--; }
         public void add_advertisment(Advertisment a)
@@ -340,10 +358,11 @@ namespace Buy_Or_Sail
         }
         public Users read_user()
         {
-            string user_name, password, tel, adv;
+            string user_name, password, tel, adv, state;
             int rating, n;
             List<KeyValuePair<bool, DateTime>> time = new List<KeyValuePair<bool, DateTime>>();
             user_name = sr.ReadLine();
+            state = sr.ReadLine();
             id = read_int();
             password = sr.ReadLine();
             rating = read_int();
@@ -360,7 +379,7 @@ namespace Buy_Or_Sail
             string[] ids = adv.Split(' ');
             List<int> a = new List<int>();
             for (int i = 0; i < ids.Length-1; i++) a.Add(Convert.ToInt32(ids[i]));
-            return new Users(id, rating, user_name, password, tel, a, time);
+            return new Users(id, rating, user_name, state, password, tel, a, time);
         }
         public KeyValuePair<string, List<int>> read_tag()
         {
@@ -395,6 +414,7 @@ namespace Buy_Or_Sail
         public void write_user(Users user)
         {
             sw.WriteLine(user.User_name);
+            sw.WriteLine(user.State);
             sw.WriteLine(user.Id);
             sw.WriteLine(user.Password);
             sw.WriteLine(user.Rating);

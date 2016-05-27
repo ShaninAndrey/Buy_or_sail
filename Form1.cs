@@ -54,6 +54,7 @@ namespace Buy_Or_Sail
         public void add_user(string Nick)
         {
             nick = Nick;
+            if (db.Users[nick].State == "admin") tag_edit_but.Visible = true; else goto_admin.Visible = true;
             my_advertisment.Location = new Point(my_advertisment.Location.X, my_advertisment.Location.Y + 100);
             Buy.Location = new Point(Buy.Location.X, Buy.Location.Y + 100);
             Sell.Location = new Point(Sell.Location.X, Sell.Location.Y + 100);
@@ -303,6 +304,11 @@ namespace Buy_Or_Sail
         {
             Edit_tags form = new Edit_tags(this);
             form.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            db.Users_to_admin.Add(db.Users[nick]);
         }
     }
 }

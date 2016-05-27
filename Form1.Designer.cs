@@ -50,6 +50,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.goto_admin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -224,8 +225,9 @@
             this.tag_edit_but.Name = "tag_edit_but";
             this.tag_edit_but.Size = new System.Drawing.Size(75, 23);
             this.tag_edit_but.TabIndex = 35;
-            this.tag_edit_but.Text = "Edit tags";
+            this.tag_edit_but.Text = "Admin";
             this.tag_edit_but.UseVisualStyleBackColor = true;
+            this.tag_edit_but.Visible = false;
             this.tag_edit_but.Click += new System.EventHandler(this.tag_edit_but_Click);
             // 
             // pictureBox5
@@ -285,12 +287,24 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.Log_in_Click);
             // 
+            // goto_admin
+            // 
+            this.goto_admin.Location = new System.Drawing.Point(447, 21);
+            this.goto_admin.Name = "goto_admin";
+            this.goto_admin.Size = new System.Drawing.Size(75, 23);
+            this.goto_admin.TabIndex = 36;
+            this.goto_admin.Text = "go to admin";
+            this.goto_admin.UseVisualStyleBackColor = true;
+            this.goto_admin.Visible = false;
+            this.goto_admin.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(712, 262);
+            this.Controls.Add(this.goto_admin);
             this.Controls.Add(this.tag_edit_but);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
@@ -345,6 +359,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Content;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button tag_edit_but;
+        private System.Windows.Forms.Button goto_admin;
     }
 }
 
