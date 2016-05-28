@@ -46,46 +46,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="add_advertisment.cs">
+    <Compile Include="Advertisment.cs" />
+    <Compile Include="File_work.cs" />
+    <Compile Include="Table.cs" />
+    <Compile Include="Forms\add_advertisment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="add_advertisment.Designer.cs">
+    <Compile Include="Forms\add_advertisment.Designer.cs">
       <DependentUpon>add_advertisment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Edit_tags.cs">
+    <Compile Include="Forms\Edit_tags.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Edit_tags.Designer.cs">
+    <Compile Include="Forms\Edit_tags.Designer.cs">
       <DependentUpon>Edit_tags.cs</DependentUpon>
     </Compile>
-    <Compile Include="Is_saved.cs">
+    <Compile Include="Forms\Is_saved.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Is_saved.Designer.cs">
+    <Compile Include="Forms\Is_saved.Designer.cs">
       <DependentUpon>Is_saved.cs</DependentUpon>
     </Compile>
-    <Compile Include="Success.cs">
+    <Compile Include="Forms\Success.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Success.Designer.cs">
+    <Compile Include="Forms\Success.Designer.cs">
       <DependentUpon>Success.cs</DependentUpon>
     </Compile>
-    <Compile Include="advertisment_viev.cs">
+    <Compile Include="Forms\advertisment_viev.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="advertisment_viev.Designer.cs">
+    <Compile Include="Forms\advertisment_viev.Designer.cs">
       <DependentUpon>advertisment_viev.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Log_in_form.cs">
+    <Compile Include="Forms\Log_in_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Log_in_form.Designer.cs">
+    <Compile Include="Forms\Log_in_form.Designer.cs">
       <DependentUpon>Log_in_form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -95,37 +98,38 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Sign_in_form.cs">
+    <Compile Include="Forms\Sign_in_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sign_in_form.Designer.cs">
+    <Compile Include="Forms\Sign_in_form.Designer.cs">
       <DependentUpon>Sign_in_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Statistic.cs">
+    <Compile Include="Forms\Statistic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Statistic.Designer.cs">
+    <Compile Include="Forms\Statistic.Designer.cs">
       <DependentUpon>Statistic.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="add_advertisment.resx">
+    <Compile Include="Users.cs" />
+    <EmbeddedResource Include="Forms\add_advertisment.resx">
       <DependentUpon>add_advertisment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Edit_tags.resx">
+    <EmbeddedResource Include="Forms\Edit_tags.resx">
       <DependentUpon>Edit_tags.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Is_saved.resx">
+    <EmbeddedResource Include="Forms\Is_saved.resx">
       <DependentUpon>Is_saved.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Success.resx">
+    <EmbeddedResource Include="Forms\Success.resx">
       <DependentUpon>Success.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="advertisment_viev.resx">
+    <EmbeddedResource Include="Forms\advertisment_viev.resx">
       <DependentUpon>advertisment_viev.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Log_in_form.resx">
+    <EmbeddedResource Include="Forms\Log_in_form.resx">
       <DependentUpon>Log_in_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -133,12 +137,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sign_in_form.resx">
+    <EmbeddedResource Include="Forms\Sign_in_form.resx">
       <DependentUpon>Sign_in_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Statistic.resx">
+    <EmbeddedResource Include="Forms\Statistic.resx">
       <DependentUpon>Statistic.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -187,6 +192,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\Statistic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\submit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\decline.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Cancel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\remove.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\add_tag.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\delete_tag.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\admin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\become_moderator.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\moderate.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,20 +16,23 @@ namespace Buy_Or_Sail
         Brush[] b;
         int n, m;
         string Ox, Oy;
+        string nick;
 
-        public Statistic(Table DB)
+        public Statistic(Form1 first)
         {
+            Classes.Table DB = first.DB;
             InitializeComponent();
             users = DB.Users;
+            nick = first.Nick;
             all = new List<KeyValuePair<bool, DateTime>>();
             DateTime mn = DateTime.Now;
-            foreach (Users first in users.Values) if (mn > first.History[0].Value) mn = first.History[0].Value;
+            foreach (Users x in users.Values) if (mn > x.History[0].Value) mn = x.History[0].Value;
             all.Add(new KeyValuePair<bool, DateTime>(true, mn));
             comboBox1.Items.Add("All users");
-            foreach (Users first in users.Values)
+            foreach (Users x in users.Values)
             {
-                all.AddRange(first.History.GetRange(1, first.History.Count - 1));
-                comboBox1.Items.Add(first.User_name);
+                all.AddRange(x.History.GetRange(1, x.History.Count - 1));
+                comboBox1.Items.Add(x.User_name);
             }
             all.Sort(CompareTo);
             n = 9;
@@ -53,17 +56,21 @@ namespace Buy_Or_Sail
             this.MinimizeBox = false;
         }
 
-        void draw_user(Brush b, Users user, int x, int y)
+        void draw_user(Brush b, Users user, int x, int y, string name)
         {
             Graphics g = this.CreateGraphics();
             g.FillRectangle(b, x, y, 10, 10);
             g.DrawRectangle(new Pen(Color.Black), x, y, 10, 10);
             g.DrawString(user.User_name + " : " + user.Rating.ToString(), this.Font, Brushes.Black, new Point(x + 20, y-2));
+            Pen p;
+            if (name == user.User_name) p = new Pen(Color.Gold); else p = new Pen(Color.Black);
+            g.DrawRectangle(p, x, y, 10, 10);
+            p.Dispose();
             g.Dispose();
         }
         void draw_diagram(List<KeyValuePair<bool, DateTime>> lst, int start)
         {
-            int x0 = 300, y0 = 300, length = 500, height = 250;
+            int x0 = 350, y0 = 300, length = 450, height = 250;
             KeyValuePair<int, int> segmentation = get_segmentation(lst, start);
             KeyValuePair<int, int> borders = draw_decart(x0, y0, x0+length, y0, x0, y0-height, n, m, segmentation, get_int(lst[0].Value));
             y0 -= start * borders.Value / segmentation.Value;
@@ -120,7 +127,7 @@ namespace Buy_Or_Sail
         }
         void draw_circle(List<Users> lst)
         {
-            int x0 = 160, y0 = 200, r = 80, n = lst.Count;
+            int x0 = 200, y0 = 200, r = 80, n = lst.Count;
             int sum = 0, s=0;
             for (int i = 0; i < lst.Count; i++) sum += lst[i].Rating;
 
@@ -135,7 +142,7 @@ namespace Buy_Or_Sail
         }
         void draw_borders(List<Users> lst, string ths)
         {
-            int x0 = 160, y0 = 200, r = 80, n = lst.Count;
+            int x0 = 200, y0 = 200, r = 80, n = lst.Count;
             int sum = 0, s = 0;
             for (int i = 0; i < lst.Count; i++) sum += lst[i].Rating;
 
@@ -176,10 +183,10 @@ namespace Buy_Or_Sail
             g.DrawString("Rating :", this.Font, Brushes.Black, new Point(10, 15));
             for (int i = 0; i < users.Values.Count; i++)
             {
-                draw_user(b[i], new List<Users>(users.Values)[i], 20, 50 + 20 * i);
+                draw_user(b[i], new List<Users>(users.Values)[i], 20, 50 + 20 * i, nick);
             }
             draw_circle(new List<Users>(users.Values));
-            draw_borders(new List<Users>(users.Values), "All users");
+            draw_borders(new List<Users>(users.Values), nick);
         }
 
         KeyValuePair<int, int> get_segmentation(List<KeyValuePair<bool, DateTime>> a, int start)
@@ -282,7 +289,7 @@ namespace Buy_Or_Sail
             a.DrawString("Rating :", this.Font, Brushes.Black, new Point(10, 15));
             for (int i = 0; i < users.Values.Count; i++)
             {
-                draw_user(b[i], new List<Users>(users.Values)[i], 20, 50 + 20 * i);
+                draw_user(b[i], new List<Users>(users.Values)[i], 20, 50 + 20 * i, comboBox1.Text);
             }
             a.Dispose();
             draw_circle(new List<Users>(users.Values));

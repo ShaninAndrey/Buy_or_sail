@@ -67,6 +67,7 @@ namespace Buy_Or_Sail
             first.DB.Users[User_name.Text].Id_adv.Add(ths.Id);
             pictureBox1.Visible = false;
             label2.Text = label2.Text.Substring(0, 9) + first.DB.Users[User_name.Text].Rating.ToString();
+            first.update_table();
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {

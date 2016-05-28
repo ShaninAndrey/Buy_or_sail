@@ -36,9 +36,9 @@ namespace Buy_Or_Sail
                 this.Height += 85;
                 comboBox6.Visible = true;
                 comboBox5.Visible = true;
-                button6.Visible = true;
-                button4.Visible = true;
-                button3.Visible = true;
+                pictureBox2.Visible = true;
+                pictureBox4.Visible = true;
+                pictureBox5.Visible = true;
                 label5.Visible = true;
                 label4.Visible = true;
             }
@@ -100,7 +100,8 @@ namespace Buy_Or_Sail
         {
             if (!new_tag.ContainsKey(comboBox3.Text)) return;
             if (!new_tag[comboBox3.Text].Contains(comboBox4.Text)) return;
-            first.DB.Tags.Add(comboBox3.Text, new Dictionary<string, List<Advertisment>>());
+            if(!first.DB.Tags.ContainsKey(comboBox3.Text))
+                first.DB.Tags.Add(comboBox3.Text, new Dictionary<string, List<Advertisment>>());
             first.DB.Tags[comboBox3.Text].Add(comboBox4.Text, new List<Advertisment>());
             foreach(Advertisment a in first.DB.New_tags[comboBox3.Text][comboBox4.Text]) first.DB.Tags[comboBox3.Text][comboBox4.Text].Add(a);
             first.DB.New_tags[comboBox3.Text].Remove(comboBox4.Text);

@@ -1,0 +1,113 @@
+3
+aaa
+user
+1
+a
+3
+(123) 123-1231
+4 2 
+4
+15/28/2016 9:58:48 AM
+15/28/2016 10:1:19 AM
+15/28/2016 10:14:16 AM
+15/28/2016 10:14:42 AM
+andrey
+admin
+3
+123
+1
+(123) 123-1231
+
+1
+15/28/2016 10:3:30 AM
+o111
+admin
+6
+o111
+1
+(123) 123-1231
+
+3
+15/28/2016 10:14:56 AM
+15/28/2016 10:15:26 AM
+15/28/2016 10:23:0 AM
+0
+5
+aaa
+2
+Buy
+Computer
+Buy computer
+1
+5/28/2016 10:1:19 AM
+2
+With very good operating system.
+And with Intel CORE i7.
+aaa
+4
+Buy
+Computer
+monitor
+1
+5/28/2016 10:14:16 AM
+1
+text
+aaa
+5
+Sell
+printer
+scaner
+1
+5/28/2016 10:14:42 AM
+1
+text
+o111
+7
+Buy
+printer
+printer
+1
+5/28/2016 10:15:26 AM
+1
+text
+o111
+8
+Buy
+Computer
+Want to buy system block
+1
+5/28/2016 10:23:0 AM
+8
+Корпус ATX InWin EN022 400W MiniTower mATX Black 	1 675
+Материнская плата MSI P55M-ED55 s1156 /p31/ 4xDDR2,PCI-E,SATA,m ATX 	3644
+Процессор нового поколения Intel Core i3-540 C-3,06/4/2.5GT Socket 1156 OEM 	4120
+Видеокарта PCI-E Palit 1024/GTS250 	3557
+Память DDR3 PC3-10600 (1333MHz) 2Gb 	1422
+Жёсткий диск SATA 500GB Seagate ST3500418AS Barracuda 7200.12 16Mb 3.0Gb/s 	1377
+Привод DVD+RW NEC ND-5240 Sata 	793
+Карт-ридер USB 2,0 	230
+2
+computer
+2
+computer
+3
+2
+5
+8
+monitor
+1
+2
+price
+1
+very expencive
+4
+2
+4
+7
+8
+1
+city
+1
+Kharkiv
+1
+8

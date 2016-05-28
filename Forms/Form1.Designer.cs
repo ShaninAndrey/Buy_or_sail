@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Theme_string = new System.Windows.Forms.Label();
             this.Theme_check = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -43,28 +43,32 @@
             this.my_advertisment = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.tag_edit_but = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.goto_admin = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tag_box = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tag_check = new System.Windows.Forms.ComboBox();
             this.Tegs = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tag_box2 = new System.Windows.Forms.ComboBox();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.listBox5 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.tag_check2 = new System.Windows.Forms.ComboBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -99,14 +103,14 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(223)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(250)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(223)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(250)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -222,16 +226,183 @@
             this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             this.listBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseMove);
             // 
-            // tag_edit_but
+            // label3
             // 
-            this.tag_edit_but.Location = new System.Drawing.Point(36, 16);
-            this.tag_edit_but.Name = "tag_edit_but";
-            this.tag_edit_but.Size = new System.Drawing.Size(75, 23);
-            this.tag_edit_but.TabIndex = 35;
-            this.tag_edit_but.Text = "Admin";
-            this.tag_edit_but.UseVisualStyleBackColor = true;
-            this.tag_edit_but.Visible = false;
-            this.tag_edit_but.Click += new System.EventHandler(this.tag_edit_but_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(310, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Select new tag";
+            // 
+            // tag_box
+            // 
+            this.tag_box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.tag_box.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tag_box.FormattingEnabled = true;
+            this.tag_box.Location = new System.Drawing.Point(525, 10);
+            this.tag_box.Name = "tag_box";
+            this.tag_box.Size = new System.Drawing.Size(104, 21);
+            this.tag_box.TabIndex = 41;
+            this.tag_box.Visible = false;
+            this.tag_box.SelectedIndexChanged += new System.EventHandler(this.Tag_box_SelectedIndexChanged);
+            this.tag_box.TextChanged += new System.EventHandler(this.Tag_box_TextChanged);
+            this.tag_box.Click += new System.EventHandler(this.Tag_box_Click);
+            // 
+            // tag_check
+            // 
+            this.tag_check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.tag_check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tag_check.FormattingEnabled = true;
+            this.tag_check.Location = new System.Drawing.Point(415, 10);
+            this.tag_check.Name = "tag_check";
+            this.tag_check.Size = new System.Drawing.Size(104, 21);
+            this.tag_check.TabIndex = 38;
+            this.tag_check.SelectedIndexChanged += new System.EventHandler(this.Tag_check_SelectedIndexChanged);
+            this.tag_check.TextChanged += new System.EventHandler(this.Tag_check_TextChanged);
+            this.tag_check.Click += new System.EventHandler(this.Tag_check_Click);
+            // 
+            // Tegs
+            // 
+            this.Tegs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
+            this.Tegs.Location = new System.Drawing.Point(166, 64);
+            this.Tegs.Name = "Tegs";
+            this.Tegs.ReadOnly = true;
+            this.Tegs.Size = new System.Drawing.Size(534, 20);
+            this.Tegs.TabIndex = 37;
+            this.Tegs.Text = "Tags";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(310, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 13);
+            this.label4.TabIndex = 49;
+            this.label4.Text = "Delete selected tag";
+            // 
+            // tag_box2
+            // 
+            this.tag_box2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.tag_box2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tag_box2.FormattingEnabled = true;
+            this.tag_box2.Location = new System.Drawing.Point(525, 37);
+            this.tag_box2.Name = "tag_box2";
+            this.tag_box2.Size = new System.Drawing.Size(104, 21);
+            this.tag_box2.TabIndex = 47;
+            this.tag_box2.Visible = false;
+            this.tag_box2.SelectedIndexChanged += new System.EventHandler(this.Tag_box2_SelectedIndexChanged);
+            this.tag_box2.TextChanged += new System.EventHandler(this.Tag_box2_TextChanged);
+            this.tag_box2.Click += new System.EventHandler(this.Tag_box2_Click);
+            // 
+            // listBox4
+            // 
+            this.listBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(525, 57);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(104, 17);
+            this.listBox4.TabIndex = 48;
+            this.listBox4.Visible = false;
+            this.listBox4.Click += new System.EventHandler(this.listBox4_Click);
+            // 
+            // listBox5
+            // 
+            this.listBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.Location = new System.Drawing.Point(415, 58);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(104, 17);
+            this.listBox5.TabIndex = 46;
+            this.listBox5.Visible = false;
+            this.listBox5.Click += new System.EventHandler(this.listBox5_Click);
+            // 
+            // tag_check2
+            // 
+            this.tag_check2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.tag_check2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tag_check2.FormattingEnabled = true;
+            this.tag_check2.Location = new System.Drawing.Point(415, 37);
+            this.tag_check2.Name = "tag_check2";
+            this.tag_check2.Size = new System.Drawing.Size(104, 21);
+            this.tag_check2.TabIndex = 44;
+            this.tag_check2.SelectedIndexChanged += new System.EventHandler(this.Tag_check2_SelectedIndexChanged);
+            this.tag_check2.TextChanged += new System.EventHandler(this.Tag_check2_TextChanged);
+            this.tag_check2.Click += new System.EventHandler(this.Tag_check2_Click);
+            // 
+            // listBox3
+            // 
+            this.listBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(525, 30);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(104, 17);
+            this.listBox3.TabIndex = 51;
+            this.listBox3.Visible = false;
+            this.listBox3.Click += new System.EventHandler(this.listBox3_Click);
+            // 
+            // listBox2
+            // 
+            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(415, 31);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(104, 17);
+            this.listBox2.TabIndex = 50;
+            this.listBox2.Visible = false;
+            this.listBox2.Click += new System.EventHandler(this.listBox2_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(137, 13);
+            this.label5.TabIndex = 52;
+            this.label5.Text = "Youre request is in process ";
+            this.label5.Visible = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::Buy_Or_Sail.Properties.Resources.become_moderator;
+            this.pictureBox9.Location = new System.Drawing.Point(15, 19);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(124, 30);
+            this.pictureBox9.TabIndex = 56;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Visible = false;
+            this.pictureBox9.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::Buy_Or_Sail.Properties.Resources.admin;
+            this.pictureBox8.Location = new System.Drawing.Point(15, 19);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(124, 32);
+            this.pictureBox8.TabIndex = 55;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Visible = false;
+            this.pictureBox8.Click += new System.EventHandler(this.tag_edit_but_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::Buy_Or_Sail.Properties.Resources.delete_tag;
+            this.pictureBox7.Location = new System.Drawing.Point(641, 37);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(61, 26);
+            this.pictureBox7.TabIndex = 54;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::Buy_Or_Sail.Properties.Resources.add_tag;
+            this.pictureBox6.Location = new System.Drawing.Point(641, 7);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(61, 24);
+            this.pictureBox6.TabIndex = 53;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox5
             // 
@@ -290,178 +461,16 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.Log_in_Click);
             // 
-            // goto_admin
-            // 
-            this.goto_admin.Location = new System.Drawing.Point(23, 16);
-            this.goto_admin.Name = "goto_admin";
-            this.goto_admin.Size = new System.Drawing.Size(107, 23);
-            this.goto_admin.TabIndex = 36;
-            this.goto_admin.Text = "Become moderator";
-            this.goto_admin.UseVisualStyleBackColor = true;
-            this.goto_admin.Visible = false;
-            this.goto_admin.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(300, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
-            this.label3.TabIndex = 43;
-            this.label3.Text = "Select new tag";
-            // 
-            // tag_box
-            // 
-            this.tag_box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
-            this.tag_box.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.tag_box.FormattingEnabled = true;
-            this.tag_box.Location = new System.Drawing.Point(515, 10);
-            this.tag_box.Name = "tag_box";
-            this.tag_box.Size = new System.Drawing.Size(104, 21);
-            this.tag_box.TabIndex = 41;
-            this.tag_box.Visible = false;
-            this.tag_box.SelectedIndexChanged += new System.EventHandler(this.Tag_box_SelectedIndexChanged);
-            this.tag_box.TextChanged += new System.EventHandler(this.Tag_box_TextChanged);
-            this.tag_box.Click += new System.EventHandler(this.Tag_box_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(625, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 39;
-            this.button1.Text = "Add tag";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tag_check
-            // 
-            this.tag_check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
-            this.tag_check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.tag_check.FormattingEnabled = true;
-            this.tag_check.Location = new System.Drawing.Point(405, 10);
-            this.tag_check.Name = "tag_check";
-            this.tag_check.Size = new System.Drawing.Size(104, 21);
-            this.tag_check.TabIndex = 38;
-            this.tag_check.SelectedIndexChanged += new System.EventHandler(this.Tag_check_SelectedIndexChanged);
-            this.tag_check.TextChanged += new System.EventHandler(this.Tag_check_TextChanged);
-            this.tag_check.Click += new System.EventHandler(this.Tag_check_Click);
-            // 
-            // Tegs
-            // 
-            this.Tegs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(220)))));
-            this.Tegs.Location = new System.Drawing.Point(166, 64);
-            this.Tegs.Name = "Tegs";
-            this.Tegs.ReadOnly = true;
-            this.Tegs.Size = new System.Drawing.Size(534, 20);
-            this.Tegs.TabIndex = 37;
-            this.Tegs.Text = "Tags";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(300, 40);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 13);
-            this.label4.TabIndex = 49;
-            this.label4.Text = "Delete selected tag";
-            // 
-            // tag_box2
-            // 
-            this.tag_box2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
-            this.tag_box2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.tag_box2.FormattingEnabled = true;
-            this.tag_box2.Location = new System.Drawing.Point(515, 37);
-            this.tag_box2.Name = "tag_box2";
-            this.tag_box2.Size = new System.Drawing.Size(104, 21);
-            this.tag_box2.TabIndex = 47;
-            this.tag_box2.Visible = false;
-            this.tag_box2.SelectedIndexChanged += new System.EventHandler(this.Tag_box2_SelectedIndexChanged);
-            this.tag_box2.TextChanged += new System.EventHandler(this.Tag_box2_TextChanged);
-            this.tag_box2.Click += new System.EventHandler(this.Tag_box2_Click);
-            // 
-            // listBox4
-            // 
-            this.listBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(515, 57);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(104, 17);
-            this.listBox4.TabIndex = 48;
-            this.listBox4.Visible = false;
-            this.listBox4.Click += new System.EventHandler(this.listBox4_Click);
-            // 
-            // listBox5
-            // 
-            this.listBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(405, 58);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(104, 17);
-            this.listBox5.TabIndex = 46;
-            this.listBox5.Visible = false;
-            this.listBox5.Click += new System.EventHandler(this.listBox5_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(625, 35);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 45;
-            this.button2.Text = "Delete tag";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // tag_check2
-            // 
-            this.tag_check2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
-            this.tag_check2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.tag_check2.FormattingEnabled = true;
-            this.tag_check2.Location = new System.Drawing.Point(405, 37);
-            this.tag_check2.Name = "tag_check2";
-            this.tag_check2.Size = new System.Drawing.Size(104, 21);
-            this.tag_check2.TabIndex = 44;
-            this.tag_check2.SelectedIndexChanged += new System.EventHandler(this.Tag_check2_SelectedIndexChanged);
-            this.tag_check2.TextChanged += new System.EventHandler(this.Tag_check2_TextChanged);
-            this.tag_check2.Click += new System.EventHandler(this.Tag_check2_Click);
-            // 
-            // listBox3
-            // 
-            this.listBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(515, 30);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(104, 17);
-            this.listBox3.TabIndex = 51;
-            this.listBox3.Visible = false;
-            this.listBox3.Click += new System.EventHandler(this.listBox3_Click);
-            // 
-            // listBox2
-            // 
-            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(240)))), ((int)(((byte)(180)))));
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(405, 31);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(104, 17);
-            this.listBox2.TabIndex = 50;
-            this.listBox2.Visible = false;
-            this.listBox2.Click += new System.EventHandler(this.listBox2_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(137, 13);
-            this.label5.TabIndex = 52;
-            this.label5.Text = "Youre request is in process ";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(712, 261);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
@@ -469,15 +478,11 @@
             this.Controls.Add(this.tag_box2);
             this.Controls.Add(this.listBox4);
             this.Controls.Add(this.listBox5);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.tag_check2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tag_box);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.tag_check);
             this.Controls.Add(this.Tegs);
-            this.Controls.Add(this.goto_admin);
-            this.Controls.Add(this.tag_edit_but);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -498,6 +503,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -529,22 +538,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Content;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button tag_edit_but;
-        private System.Windows.Forms.Button goto_admin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox tag_box;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.ListBox listBox5;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox tag_check;
         private System.Windows.Forms.TextBox Tegs;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox tag_box2;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox tag_check2;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox9;
     }
 }
 
